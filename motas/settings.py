@@ -17,8 +17,11 @@ SECRET_KEY = 'django-insecure-8l5^x(e07*z##5z5=ctj)68td$1c0lo2b*vw6^vij#9lo-qu1l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'motas.onrender.com',
+    'localhost',  # Optional: For local development
+    '127.0.0.1', # Optional: For local development
+]
 
 # Application definition
 
@@ -208,3 +211,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'no-reply@motas.com'
 
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
