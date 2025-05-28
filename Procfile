@@ -1,1 +1,1 @@
-web: gunicorn mi_app.wsgi
+web: gunicorn motas.wsgi
