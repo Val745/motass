@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:wght@300;400;700;900&family=PT+Serif:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png); /* Verifica la ruta */
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+#urgencias {
+    background-color: #b40ea8; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima del header */
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 100px;
+    background-color: rgb(44, 203, 179);
+    margin-top: 45px;
+    z-index: 1000; /* Asegura que esté por encima del header */
+
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin: 0 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #f2f2f2;
+    transition: color 0.3s;
+}
+
+.item:hover {
+    color: #ff58e6;
+}
+
+.item a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Usa el mismo color que el li */
+    font-size: inherit; /* Mantiene el mismo tamaño de fuente */
+    font-weight: inherit; /* Mantiene el mismo grosor de fuente */
+    transition: color 0.3s;
+    display: block; /* Hace que ocupe toda el área del li */
+}
+
+/* Mantiene el efecto hover en toda el área del li */
+.item:hover a {
+    color: #ff58e6;
+    text-decoration: none; /* Elimina el subrayado */
+
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+label {
+    cursor: pointer;
+    display: none;
+}
+
+
+/* --- Estilos del modal --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.emergency {
+    background-color: rgb(13, 173, 173);
+    color: white;
+}
+
+.option {
+    background-color: white;
+    color: rgb(2, 156, 156);
+    border: 1px solid rgb(2, 156, 156);
+}
+
+.option:hover {
+    background-color: rgb(2, 156, 156);
+    color: white;
+}
+
+h1{
+    margin-top: 165px;
+    font-weight:800;
+    font-size: 6vh;
+    color:#a20c98
+}
+
+.form-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #780971;
+  }
+  
+  form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  form input[type="text"],
+  form input[type="number"],
+  form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    outline: none;
+  }
+  
+  .Guardar-btn {
+    width: 200px;
+    background-color: #ca3fb5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bolder;
+    font-size: 4vh;
+    margin: 20px auto;
+}
+
+.Guardar-btn:hover {
+    background-color: #b40ea8;
+}
+  

@@ -1,0 +1,963 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:wght@300;400;700;900&family=PT+Serif:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap');
+@import url('CSS/carrusel.css');
+@import url('CSS/piePag.css');
+@import url('CSS/reseñas.css');
+@import url('CSS/portada.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 145vh;
+    position: relative;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png); /* Verifica la ruta */
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+}
+/* Contenedor del botón */
+.whatsapp-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* Flecha animada */
+.arrow {
+    width: 15px;
+    height: 15px;
+    border-right: 4px solid #25d366;
+    border-bottom: 4px solid #25d366;
+    transform: rotate(-45deg);
+    animation: moveArrow 1.5s infinite;
+}
+
+@keyframes moveArrow {
+    0%, 100% { transform: translateX(0) rotate(-45deg); }
+    50% { transform: translateX(5px) rotate(-45deg); }
+}
+
+/* Botón de WhatsApp */
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    background-color: #25d366;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.whatsapp-button img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Etiqueta "Escríbenos" */
+.whatsapp-label {
+    position: absolute;
+    background-color: white;
+    color: #25d366;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 10px;
+    bottom: 5px;
+    left: 100%;
+    margin-left: 8px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+#urgencias {
+    background-color: #b40ea8; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima del header */
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 100px;
+    background-color: rgb(44, 203, 179);
+    margin-top: 45px;
+    z-index: 1000; /* Asegura que esté por encima del header */
+
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin: 0 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #f2f2f2;
+    transition: color 0.3s;
+}
+
+.item:hover {
+    color: #ff58e6;
+}
+
+.item a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Usa el mismo color que el li */
+    font-size: inherit; /* Mantiene el mismo tamaño de fuente */
+    font-weight: inherit; /* Mantiene el mismo grosor de fuente */
+    transition: color 0.3s;
+    display: block; /* Hace que ocupe toda el área del li */
+}
+
+/* Mantiene el efecto hover en toda el área del li */
+.item:hover a {
+    color: #ff58e6;
+    text-decoration: none; /* Elimina el subrayado */
+
+}
+
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+label {
+    cursor: pointer;
+    display: none;
+}
+
+.btn {
+    padding: 10px 24px;
+    margin-left: 100px;
+    border-radius: 30px;
+    background-color: #ff58e6;
+    color: #f2f2f2;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ca3fb5;
+}
+
+
+/* --- Estilos del modal --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-login{
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-logincontent{
+    background: #dce4e4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 50%; /* Lo mueve al 50% de la altura */
+    transform: translateY(-50%); /* Lo ajusta al centro */
+}
+
+.modal-login label {
+    display: block; /* O inline-block si lo prefieres */
+    margin-bottom: 5px;
+}
+
+.modal-register{
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-registercontent{
+    background: #dce4e4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 50%; /* Lo mueve al 50% de la altura */
+    transform: translateY(-50%); /* Lo ajusta al centro */
+}
+
+.modal-register label {
+    display: block; /* O inline-block si lo prefieres */
+    margin-bottom: 5px;
+}
+
+/* Botones dentro del modal */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.emergency {
+    background-color: rgb(13, 173, 173);
+    color: white;
+}
+
+.option {
+    background-color: white;
+    color: rgb(2, 156, 156);
+    border: 1px solid rgb(2, 156, 156);
+}
+
+.option:hover {
+    background-color: rgb(2, 156, 156);
+    color: white;
+}
+
+/* Estilos para la sección Hero de Nosotros */
+.nosotros-hero {
+    margin-left: 15%;
+    margin-top: 200px;
+    position: relative;
+    width: 70%;
+    height: 50%;
+    border-radius: 5%;
+    background-image: url(../img/cabNos.jpg); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: #ffffff;
+}
+
+.nosotros-hero::before {
+    border-radius: 5%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.137); /* Fondo oscuro para mejorar la legibilidad */
+}
+
+.nosotros-hero-contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+.motas {
+    color:  rgb(0, 255, 242); /* Cambia el color de "Motas" */
+    font-weight: bold; /* Opcional: hace que "Motas" resalte más */
+
+}
+
+.nosotros-hero h1 {
+    display: flex;
+    font-size: 48px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 8%;
+
+}
+
+.nosotros-hero p {
+    font-size: 25px;
+    line-height: 1.6;
+    margin-top: 2%;
+    margin-left: 8%;
+}
+
+.contenedor-posts {
+    margin-top: 10%;
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #E3F9F2; /* Color de fondo similar */
+}
+
+.contenedor-posts h2 {
+    font-size: 2rem;
+    color: #24A89D;
+    margin-bottom: 30px;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+}
+
+.post img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.post h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.post h3 a {
+    text-decoration: none;
+    color: #24A89D;
+}
+
+.post p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.leer-mas {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #24A89D;
+    font-weight: bold;
+}
+
+.leer-mas:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la sección "Por Qué Elegirnos" con Imagen */
+.por-que-elegirnos-contenido {
+    margin-top: 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-right: 8%;
+    gap: 15px;
+}
+
+.por-que-elegirnos .texto {
+    flex: 1;
+}
+
+.por-que-elegirnos h2 {
+    font-size: 30px;
+    color: #232323;
+    margin-bottom: 20px;
+}
+
+.por-que-elegirnos p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.razones {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.razon {
+    font-size: 1.3rem;
+    color: #ff69b4;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s;
+}
+
+.razon h3 {
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 2px solid #ff69b4;
+}
+
+.razon p {
+    display: none;
+    padding: 3px;
+    font-size: 1.1rem;
+    color: #333;
+}
+.links{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.links:hover{
+    color: #ff69b4;
+}
+
+.razon h3:hover {
+    color: #ff69b4 ;
+}
+
+.por-que-elegirnos .imagen {
+    flex: 1;
+    text-align: center;
+    min-width: 700px;
+    margin-top:10%;
+
+}
+.por-que-elegirnos .imagen img {
+    max-width: 100%;
+}
+
+/* Estilos para la sección Nosotros (contenido principal) */
+.nosotros {
+    text-align: center;
+    margin-top: 5%;
+
+}
+
+.nosotros-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nosotros h2 {
+    font-size: 36px;
+    color: #232323;
+    margin-bottom: 15px;
+}
+
+.nosotros p {
+    font-size: 20px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.649);
+}
+
+.nosotros-equipo {
+    margin-top: 10%;
+
+}
+
+.nosotros-equipo h3 {
+    font-size: 28px;
+    color: #232323;
+    margin-bottom: 20px;
+}
+
+.equipo-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.equipo-miembro {
+    max-width: 300px;
+    text-align: center;
+}
+
+.equipo-miembro img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.equipo-miembro h4 {
+    font-size: 22px;
+    color: #232323;
+    margin-bottom: 10px;
+}
+
+.equipo-miembro p {
+    font-size: 16px;
+    color: #777;
+}
+
+
+.container-reseñas {
+    width: 100%;
+    margin: auto;
+    margin-top: 5%;
+
+}
+
+.container-reseñas h2 {
+    color: #121213;
+    text-align: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 4%;
+    margin-top: 2%;
+}
+
+.brand img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.brand .stars {
+    font-size: 18px;
+    color: #ffa500;
+}
+
+.brand .motasre{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.btn-reseñas {
+    display: inline-block;
+    background-color: #ff4fe8;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.btn-reseñas:hover {
+    background-color: #db3bc3;
+}
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px; /* Ajusta según el tamaño deseado */
+    margin: auto;
+    margin-top: 3%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(3 * (300px + 30px)); /* 3 imágenes con margen */
+}
+
+.carousel img {
+    width: 300px; /* Ancho de cada imagen */
+    margin: 0 15px; /* Espacio entre imágenes */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0; /* Evita que las imágenes se reduzcan */
+    background-color: white;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out; /* Animación para ocultar/mostrar */
+}
+
+.nav-btn.hidden {
+    opacity: 0;
+    pointer-events: none; /* Desactiva los clics cuando está oculto */
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+
+.ubicacion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilos para la imagen del mapa */
+.ubicacion img {
+    width: 100%;
+    max-width: 400px;
+    border: 1px dashed #2c2c54;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.ubicacion img:hover {
+    transform: scale(1.05);
+}
+
+/* Información de la sede debajo de la imagen */
+.info-sede {
+    background: white;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.info-sede h2 {
+    color: #2c2c54;
+}
+
+.info-sede p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.nuestras-redes {
+    background: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 35px;
+
+}
+
+.nuestras-redes h2 {
+    font-size: 28px;
+    color: #232323;
+    margin-bottom: 10px;
+
+}
+
+.nuestras-redes p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Redes Sociales */
+.redes-sociales {
+    margin: 10px 0;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.redes-sociales img {
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+}
+
+.redes-sociales img:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedores */
+.redes-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.redes-section {
+    max-width: 250px;
+    text-align: left;
+}
+
+h3 {
+    font-size: 20px;
+    color: #232323;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+ul li a, p a {
+    text-decoration: none;
+    color: #000000;
+    transition: 0.3s;
+}
+
+ul li a:hover, p a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+/* Icono en WhatsApp */
+.redes-section p img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+.footer {
+    background: #38ccc9;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+    .por-que-elegirnos-contenido {
+        flex-direction: column;
+    }
+    .formulario, .ubicacion {
+        width: 100%;
+    }
+
+    .ubicacion img {
+        max-width: 100%;
+    }
+
+    .contenedor-ubi {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario, .ubicacion {
+        width: 100%;
+    }
+
+    .ubicacion img {
+        max-width: 100%;
+    }
+
+    .veterinaria {
+        padding: 20px;
+        margin-top: 50vh;
+    }
+
+    .servicios {
+        grid-template-columns: repeat(2, 1fr); /* Se muestran solo 2 columnas */
+        gap: 15px;
+    }
+
+    .servicio {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    .logo {
+        height: 70px;
+        width: auto;
+    }
+
+}
+
+
+/* Ajuste progresivo del tamaño de los ítems del menú */
+@media (max-width: 1300px) {
+    .item {
+        font-size: 16px; /* Reduce el tamaño */
+        margin: 0 10px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .item {
+        font-size: 16px; /* Reduce el tamaño */
+        margin: 0 10px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 60px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .item {
+        font-size: 15px; /* Reduce el tamaño */
+        margin: 0 9px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 990px) {
+    .item {
+        font-size: 14px; /* Se sigue reduciendo el tamaño */
+        margin: 0 8px; /* Espaciado menor */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu {
+        gap: 2px; /* Reduce la separación entre elementos */
+    }
+}
+
+/* --- Responsive Final (Modo menú hamburguesa) --- */
+@media (max-width: 850px) {
+    .menu {
+        padding: 30px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    label {
+        display: initial;
+    }
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(98, 105, 127);
+        display: none;
+    }
+    .item {
+        margin: 0 0 20px 0;
+    }
+    .btn {
+        width: 150px;
+    }
+    #menu:checked ~ .menu {
+        display: block;
+    }
+}

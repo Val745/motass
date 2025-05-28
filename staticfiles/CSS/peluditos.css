@@ -1,0 +1,634 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:wght@300;400;700;900&family=PT+Serif:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap');
+@import url('CSS/carrusel.css');
+@import url('CSS/piePag.css');
+@import url('CSS/reseñas.css');
+@import url('CSS/portada.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 145vh;
+    position: relative;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png); /* Verifica la ruta */
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+/* Contenedor del botón */
+.whatsapp-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* Flecha animada */
+.arrow {
+    width: 15px;
+    height: 15px;
+    border-right: 4px solid #25d366;
+    border-bottom: 4px solid #25d366;
+    transform: rotate(-45deg);
+    animation: moveArrow 1.5s infinite;
+}
+
+@keyframes moveArrow {
+    0%, 100% { transform: translateX(0) rotate(-45deg); }
+    50% { transform: translateX(5px) rotate(-45deg); }
+}
+
+/* Botón de WhatsApp */
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    background-color: #25d366;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.whatsapp-button img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Etiqueta "Escríbenos" */
+.whatsapp-label {
+    position: absolute;
+    background-color: white;
+    color: #25d366;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 10px;
+    bottom: 5px;
+    left: 100%;
+    margin-left: 8px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+#urgencias {
+    background-color: #b40ea8; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima del header */
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 100px;
+    background-color: rgb(44, 203, 179);
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 45px;
+    z-index: 1000; /* Asegura que esté por encima del header */
+
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    margin: 0 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #f2f2f2;
+    transition: color 0.3s;
+}
+
+.item:hover {
+    color: #ef10c2;
+}
+
+.item a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Usa el mismo color que el li */
+    font-size: inherit; /* Mantiene el mismo tamaño de fuente */
+    font-weight: inherit; /* Mantiene el mismo grosor de fuente */
+    transition: color 0.3s;
+    display: block; /* Hace que ocupe toda el área del li */
+}
+
+/* Mantiene el efecto hover en toda el área del li */
+.item:hover a {
+    color: #ef10c2;
+    text-decoration: none; /* Elimina el subrayado */
+
+}
+
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+label {
+    cursor: pointer;
+    display: none;
+}
+
+.btn {
+    padding: 10px 24px;
+    margin-left: 100px;
+    border-radius: 30px;
+    background-color: #ff58e6;
+    color: #f2f2f2;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ca3fb5;
+}
+.btn {
+    padding: 10px 24px;
+    margin-left: 100px;
+    border-radius: 30px;
+    background-color: #ef10c2;
+    color: #f2f2f2;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ca3fb5;
+}
+
+/* --- Estilos del modal --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(32, 33, 33, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-login{
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-logincontent{
+    background: #dce4e4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 50%; /* Lo mueve al 50% de la altura */
+    transform: translateY(-50%); /* Lo ajusta al centro */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-login label {
+    display: block; /* O inline-block si lo prefieres */
+    margin-bottom: 5px;
+}
+
+.modal-register{
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-registercontent{
+    background: #dce4e4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 50%; /* Lo mueve al 50% de la altura */
+    transform: translateY(-50%); /* Lo ajusta al centro */
+}
+
+.modal-register label {
+    display: block; /* O inline-block si lo prefieres */
+    margin-bottom: 5px;
+}
+
+/* Botones dentro del modal */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.emergency {
+    background-color: rgb(13, 173, 173);
+    color: white;
+}
+
+.iniciar{
+    background-color: rgb(13, 173, 173);
+    color: white;
+}
+
+.sign{
+    background-color: rgb(13, 173, 173);
+    color: white;
+}
+
+.option {
+    background-color: white;
+    color: rgb(2, 156, 156);
+    border: 1px solid rgb(2, 156, 156);
+}
+
+.option:hover {
+    background-color: rgb(2, 156, 156);
+    color: white;
+}
+
+/* Estilos para la sección de perritos */
+.peluditos-adopcion {
+    padding: 50px 20px;
+    text-align: center;
+}
+.peludito-link{
+    text-decoration: none;
+}
+
+.peluditos-adopcion h1 {
+    margin-top: 100px;
+    font-size: 2.5rem;
+    color: #131313;
+    margin-bottom: 15px;
+}
+
+.peluditos-adopcion p {
+    font-size: 25px;
+    color: #5f5f5f;
+    font-weight: bold;
+}
+
+/* Lista de perritos */
+.lista-peluditos {
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Tarjeta de perrito */
+.peludito-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.241);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.peludito-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.peludito-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.peludito-card h2 {
+    font-size: 1.8rem;
+    color: #FF69B4;
+    margin: 20px 0 10px;
+}
+
+.peludito-card p {
+    font-size: 1rem;
+    color: #555;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Botón de adoptar */
+.btn-adoptar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF69B4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-adoptar:hover {
+    background-color: #e0529c;
+}
+
+.nuestras-redes {
+    background: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 35px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #232323;
+    margin-bottom: 10px;
+}
+
+.nuestras-redes p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Redes Sociales */
+.redes-sociales {
+    margin: 10px 0;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.redes-sociales img {
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+}
+
+.redes-sociales img:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedores */
+.redes-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.redes-section {
+    max-width: 250px;
+    text-align: left;
+}
+
+h3 {
+    font-size: 20px;
+    color: #232323;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+ul li a, p a {
+    text-decoration: none;
+    color: #000000;
+    transition: 0.3s;
+}
+
+ul li a:hover, p a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+/* Icono en WhatsApp */
+.redes-section p img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+.footer {
+    background: #38ccc9;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ayuda-container {
+        flex-direction: column;
+    }
+
+    .ayuda-text-container {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .ayuda-image-container {
+        width: 100%;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    .logo {
+        height: 70px;
+        width: auto;
+    }
+
+}
+
+
+/* Ajuste progresivo del tamaño de los ítems del menú */
+@media (max-width: 1300px) {
+    .item {
+        font-size: 16px; /* Reduce el tamaño */
+        margin: 0 10px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .item {
+        font-size: 16px; /* Reduce el tamaño */
+        margin: 0 10px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 60px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .item {
+        font-size: 15px; /* Reduce el tamaño */
+        margin: 0 9px; /* Reduce el espacio entre ítems */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 990px) {
+    .item {
+        font-size: 14px; /* Se sigue reduciendo el tamaño */
+        margin: 0 8px; /* Espaciado menor */
+    }
+    .btn {
+        margin-left: 50px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu {
+        gap: 2px; /* Reduce la separación entre elementos */
+    }
+}
+
+/* --- Responsive Final (Modo menú hamburguesa) --- */
+@media (max-width: 850px) {
+    .menu {
+        padding: 30px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    label {
+        display: initial;
+    }
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(98, 105, 127);
+        display: none;
+    }
+    .item {
+        margin: 0 0 20px 0;
+    }
+    .btn {
+        width: 150px;
+    }
+    #menu:checked ~ .menu {
+        display: block;
+    }
+}
