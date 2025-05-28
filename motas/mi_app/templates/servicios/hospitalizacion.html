@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hospitalizacion - Motas</title>
+    <link rel="stylesheet" href="../../static/CSS/servicios.css">
+</head>
+<body>
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<!--************************* Cabecera ******************************-->
+
+<header id="Header">
+    <img src="../../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+    </ul>
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+<!--************************* texto ******************************-->
+<h1 class="titulo">HOSPITALIZACIÓN</h1>
+<hr>
+
+<section class="servicios-pagina">
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Hospitalización de Mascotas</h2>
+            <p>Sabemos que dejar a tu querido amigo en nuestras manos cuando hay una emergencia veterinaria puede ser una difícil experiencia emocional, por lo que hemos diseñado un entorno de hospitalización cómodo y seguro para tu peludito.</p>
+            <p>En nuestro hospital veterinario, contamos con un equipo de médicos y auxiliares veterinarios expertos, dedicados a garantizar que tu mascota reciba la atención que se merece; cada paciente hospitalizado recibe un cuidado personalizado y constante.</p>
+            <p>Cada peludito es único, por lo que ofrecemos áreas de hospitalización de mascotas adaptadas a todos los tamaños y necesidades, ya sea tu compañero canino o felino, y sin importar su condición, nuestro compromiso es su pronta recuperación.</p>
+            <br>
+            <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos" >¡HABLEMOS!</a>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/hos1.webp" alt="Perro para adopción">
+        </div>
+
+    </section>
+    <hr>
+    <!--************************* texto ******************************-->
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/hos2.webp" alt="Perro para adopción">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Hospitalización para Perros</h2>
+            <p>Nuestra hospitalización para perros ha sido diseñada pensando en su comodidad y bienestar.</p>
+            <p>Contamos con una variedad de jaulas adaptadas a diferentes tamaños, y en función del estado de salud de tu mascota.</p>
+            <p>Nuestros pacientes caninos disfrutan de salidas diarias para estirar las patas, hacer sus necesidades y disfrutar del sol.</p>
+            <p>Estas salidas son supervisadas por nuestro equipo de auxiliares o pueden ser acompañados por sus tutores, asegurando que tu mascota se sienta feliz, tranquila y cuidada en todo momento.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Hospitalización para Gatos</h2>
+            <p>Cuidamos de nuestros amigos felinos con un enfoque especial. Hemos tomado medidas para garantizar que su estancia sea lo más relajante posible.</p>
+            <p>Nuestras modernas jaulas, diseñadas específicamente para gatos, están aisladas tanto física como acústicamente de los perros, lo que reduce significativamente su estrés.</p>
+            <p>Cada gato cuenta con su propio espacio que incluye comedero y arenero, y hemos incorporado feromonas en el ambiente para minimizar aún más cualquier tensión.</p>
+            <p>En Motas, brindamos un ambiente hospitalario que atiende las necesidades únicas de tu mascota, asegurando su comodidad y bienestar durante su estancia.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/hos3.webp" alt="Perro para adopción">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/hos4.webp" alt="Perro para adopción">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Hospitalización por parvovirus infeccioso</h2>
+            <p>Diseñamos un espacio estratégicamente aislado para garantizar la salud y bienestar de todas nuestras mascotas hospitalizadas.</p>
+            <p>Este espacio exclusivo está acondicionado para atender a animales infecciosos, siguiendo rigurosas normas de higiene y desinfección.</p>
+            <p>Esta medida no solo garantiza una atención cuidadosa a estos pacientes, sino que también previene cualquier riesgo de contagio para las demás mascotas en hospitalización.</p>
+            <p>En nuestro centro médico veterinario, la seguridad y la salud de tu mascota es nuestra prioridad.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Unidad de Cuidados Intensivos (UCI)</h2>
+            <p>Es el lugar de atención prioritaria para pacientes críticos que requieren una atención ininterrumpida y altamente especializada por parte de nuestros Médicos y Auxiliares Veterinarios.</p>
+            <p>Este espacio de nuestra clínica está equipado con tecnología biomédica de última generación, lo que nos permite brindar un soporte completo, incluyendo ventilación, monitoreo hemodinámico constante, administración precisa de medicamentos a través de bombas de infusión y análisis inmediato de parámetros sanguíneos.</p>
+            <p>En nuestro hospital veterinario 24 horas, estamos comprometidos con la atención excepcional de tu mascota en situaciones críticas, asegurando su recuperación y bienestar.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/hos5.webp" alt="Perro para adopción">
+        </div>
+    </section>
+    <hr>
+
+
+    <!--************************* Contador ******************************-->
+    <section class="contador">
+        <div class="item-contador">
+            <span class="number" data-target="+300">0</span>
+            <p>Mascotas atendidas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="  +8  ">0</span>
+            <p>Años de Experiencia</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="+120">0</span>
+            <p>Cirugías realizadas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target=" +15">0</span>
+            <p>Servicios especializados</p>
+        </div>
+    </section>
+</section>
+
+<!--************************* Botton WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../../static/img/icoFB.png" alt="Facebook">
+        </a>
+
+    </div>
+
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p>
+
+            </p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                <li><a href="#">Blog/Noticias</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia
+        Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../../static/js/servicios.js"></script>
+</body>
+</html>

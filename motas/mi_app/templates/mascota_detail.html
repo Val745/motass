@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motas</title>
+    <link rel="stylesheet" href="../../static/CSS/mascota_detail.css?v=1">
+
+</head>
+
+<body>
+
+    <!--************************* Cabecera ******************************-->
+    <div id="urgencias">
+        <p>Línea de urgencias 24/7</p>
+    </div>
+    
+    <header id="Header">
+        <img src="../../static/img/LogoMotas.png" class="logo">
+
+        <input type="checkbox" id="menu">
+        <label for="menu">
+            <img src="../../static/img/menu.png" class="menu-ico" alt="Menú">
+        </label>
+
+        <ul class="menu">
+            <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+            <li class="item"><a href="{% url 'citas' %}">citas</a></li>
+            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+            <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+            <li class="item" id="contactanos-btn">Contáctanos</li>
+            {% if user.is_authenticated %}
+                <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            {% else %}
+                <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+                <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+            {% endif %}
+        </ul>
+
+    </header>
+
+    <!--************************* Modal de Contacto ******************************-->
+    <div id="modal-contacto" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Contáctanos</h2>
+            <button class="emergency">Llama a la línea de emergencia</button>
+            <button class="option">Asesoría Médica</button>
+            <button class="option">Llámanos ahora</button>
+            <button class="option">Agenda tu cita</button>
+        </div>
+    </div>
+
+    <h2>¡EDITA LOS DATOS DE TU MASCOTA!</h2><BR>
+    <div class="form-seccion">
+        <form method="POST">
+            {% csrf_token %}
+    
+            <div class="form-mascota">
+                {% for field in form.visible_fields %}
+                <div class="campo-formulario">
+                    <h4>
+                        {% if field.name == "edad" %}
+                            Edad en meses
+                        {% else %}
+                            {{ field.label }}
+                        {% endif %}
+                    </h4>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="form-seccion">
+        <form method="get">
+            <h3>Historial Médico</h3>
+            {{ formset.management_form }}
+            {% for f in formset %}
+                <div class="form-historial">
+                    {% for field in f.visible_fields %}
+                        <div class="campo-lectura">
+                            <h4>{{ field.label }}</h4>
+                            <p>
+                                {% if field.label == "Peso (kg)" and field.value == None %}
+                                    Indefinido
+                                {% elif field.value == None or field.value == "" %}
+                                    Indefinido
+                                {% elif field.value == True %}
+                                    Aplicada
+                                {% elif field.value == False %}
+                                    No Aplicada
+                                {% else %}
+                                    {{ field.value }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+    
+        </form>
+    </div>
+    <button class="Guardar-btn">GUARDAR</button>
+
+</body>
+</html>

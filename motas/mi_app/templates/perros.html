@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perritos en Adopción - Motas</title>
+  <link rel="stylesheet" href="../static/CSS/peluditos.css"> <!-- Asegúrate de enlazar tu CSS -->
+</head>
+<body>
+
+<div id="urgencias">
+  <p>Línea de urgencias 24/7</p>
+</div>
+<!--************************* Cabecera ************************* *****-->
+<header id="Header">
+  <img src="../static/img/LogoMotas.png" class="logo">
+
+  <input type="checkbox" id="menu">
+  <label for="menu">
+    <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+  </label>
+
+  <ul class="menu">
+    <li class="item"><a href="index.html">Inicio</a></li>
+    <li class="item"><a href="nosotros.html">Nosotros</a></li>
+    <li class="item"><a href="servicios.html">Servicios</a></li>
+    <li class="item"><a href="adopta.html">Adopta</a></li>
+    <li class="item" id="contactanos-btn">Contáctanos</li>
+    <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+  </ul>
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+  <div class="modal-logincontent">
+    <span class="close">&times;</span>
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm" action="login.php" method="POST">
+      <label for="email"><strong>Email:</strong></label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password"><strong>Contraseña:</strong></label>
+      <input type="password" id="password" name="password" required>
+      <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+      <br>
+
+      <button class="iniciar">Iniciar Sesión</button>
+      <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+      <button class="option" id="openRegisterModal">Regístrate</button>
+
+    </form>
+  </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+  <div class="modal-registercontent">
+    <span class="close">&times;</span>
+    <h2>Registrarse</h2>
+    <form id="registerForm" action="register.php" method="POST">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" name="telefono">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion">
+
+      </select>
+
+      <button class="sign">Registrarse</button>
+    </form>
+  </div>
+</div>
+
+<!--************************* Botton WhatsApp ******************************-->
+
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+  <div class="arrow"></div>
+  <div class="whatsapp-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span class="whatsapp-label">Escríbenos</span>
+  </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option">Asesoría Médica</button>
+    <button class="option">Llámanos ahora</button>
+    <button class="option">Agenda tu cita</button>
+  </div>
+</div>
+
+
+<!-- Sección de perritos -->
+<section class="peluditos-adopcion">
+  <h1>ADOPTA UN PELUDITO</h1>
+  <p>¡Conoce a nuestros perritos que buscan un hogar lleno de amor!</p>
+
+  <!-- Lista de perritos -->
+  <div class="lista-peluditos">
+    <!-- peludito 1 -->
+    <a href="perros/perro1.html" class="peludito-link">
+      <div class="peludito-card">
+        <img src="../static/img/perrito1.jpg" alt="peludito 1">
+        <h2>Martina</h2>
+      </div>
+    </a>
+
+    <!-- peludito 2 -->
+    <a href="perros/perro2.html" class="peludito-link">
+      <div class="peludito-card">
+        <img src="../static/img/perrito2.jpg" alt="peludito 2">
+        <h2>Poncho</h2>
+      </div>
+    </a>
+
+    <!-- peludito 3 -->
+    <a href="perros/perro3.html" class="peludito-link">
+      <div class="peludito-card">
+        <img src="../static/img/perrito3.jpg" alt="peludito 3">
+        <h2>Timon</h2>
+      </div>
+    </a>
+  </div>
+  </div>
+</section>
+
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+  <h2>Nuestras redes</h2>
+  <p>Síguenos y descubre nuestro contenido de interés:</p>
+  <div class="redes-sociales">
+    <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+      <img src="../static/img/icoIG.png" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+      <img src="../static/img/icoFB.png" alt="Facebook">
+    </a>
+
+  </div>
+
+  <div class="redes-container">
+    <!-- Atención 24 horas -->
+    <div class="redes-section">
+      <h3>ATENCIÓN 24 HORAS</h3>
+      <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+      <p>
+
+      </p>
+      <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+    </div>
+
+    <!-- Servicios -->
+    <div class="redes-section">
+      <h3>SERVICIOS</h3>
+      <ul>
+        <li><a href="#">Ayudas Diagnósticas</a></li>
+        <li><a href="#">Hospitalización</a></li>
+        <li><a href="#">Urgencias 24 Horas</a></li>
+        <li><a href="#">Cirugía</a></li>
+        <li><a href="#">Medicina Preventiva</a></li>
+        <li><a href="#">Consulta</a></li>
+        <li><a href="#">Trámite de viaje</a></li>
+        <li><a href="#">Laboratorio Clínico</a></li>
+      </ul>
+    </div>
+
+    <!-- Información -->
+    <div class="redes-section">
+      <h3>INFORMACIÓN</h3>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Contáctanos</a></li>
+        <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+        <li><a href="#">Blog/Noticias</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+  <p>&copy; Motas 2025 © Medellín, Colombia
+    Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../static/js/perros.js"></script>
+</body>
+</html>

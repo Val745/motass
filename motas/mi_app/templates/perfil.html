@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motas</title>
+    <link rel="stylesheet" href="../static/CSS/perfil.css?v=1">
+
+</head>
+
+<body>
+
+<!--************************* Cabecera ******************************-->
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<header id="Header">
+    <img src="../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
+    </ul>
+
+</header>
+
+<!--************************* Botón WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+<h1 id="welcome">Bienvenid@ {{ user.first_name }}</h1>
+
+<h2 id="titulo-mascotas">TUS MASCOTAS:</h2>
+<ul class="lista-mascotas">
+    {% for mascota in mascotas %}
+        <li class="item-mascota">
+            {% if mascota.id %}
+                <a href="{% url 'mascota_detail' mascota.id %}" class="enlace-mascota">
+                    <h3 class="nombre-mascota">{{ mascota.nombre|upper }}</h3>
+                </a>
+            {% else %}
+                <h3 class="nombre-mascota sin-id">{{ mascota.nombre }} (ID no disponible)</h3>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+          
+<form action="{% url 'crear_mascota' %}" method="get" style="display: inline;">
+    <button class="Agregar-mascota">
+        AGREGA UNA MASCOTA
+    </button> 
+</form>
+
+
+</body>
+</html>

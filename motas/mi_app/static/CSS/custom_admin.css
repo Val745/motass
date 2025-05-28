@@ -1,0 +1,289 @@
+/* ------------------------- */
+/* Estilos generales y fondo */
+/* ------------------------- */
+body, .content, .main-header, .main-sidebar, .content-wrapper,
+#content, .main-content {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333 !important;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fb91c6;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+
+input[type="submit"], a.button, .submit-row input, .deletelink {
+    padding: 8px 15px !important;
+    background-color: #94efe4;
+    font-weight: bold !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, .15) !important;
+    border: none !important;
+}
+.selector-chosen h2 {
+    background: #98efdc;
+    color: #fff;
+}
+/* Para toda la fila y su contenido */
+tr.even td,
+tr.even th,
+tr.even a {
+    background-color: white !important;
+    color: #333 !important;
+    border-color: #eee !important; /* Opcional: bordes claros */
+}
+/* Para el encabezado de la tabla completo */
+#result_list thead {
+    background-color: #ff69b4 !important; /* Rosa clásico */
+}
+
+/* Versión con gradiente más elegante */
+#result_list thead {
+    background-color: #f9acec !important; /* Rosa pastel */
+    color: #333 !important; /* Texto oscuro */
+}
+
+#result_list thead:hover {
+    background-color: #ffa2ef;
+    background-image: linear-gradient(to right, #ff77d8, #fa7ebc);
+}
+
+/* Para las celdas individuales del encabezado */
+#result_list thead th {
+    background-color: transparent !important; /* Mantiene el rosa del thead */
+    color: white !important; /* Texto blanco para contraste */
+    border-bottom: none !important; /* Opcional: elimina borde inferior */
+}
+
+/* Estilo para el checkbox del encabezado */
+#result_list thead .djn-checkbox-select-all {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Estilo para el texto del encabezado */
+#result_list thead .text {
+    color: white !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-pink {
+    background-color: #7bebd3;
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    background-image: none !important;
+    background-color: #f49ede !important;
+    backdrop-filter: blur(5px);
+
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6, label, .breadcrumb {
+    color: #333 !important;
+}
+
+/* Enlaces generales */
+a {
+    color: #333 !important;
+}
+
+/* Sidebar links */
+.main-sidebar .nav-sidebar > li > a {
+    color: #fff !important;
+    font-weight: bolder;
+}
+[class*=sidebar-dark-] .nav-header {
+    color: rgb(255, 255, 255);
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.main-sidebar .nav-sidebar > li.active > a {
+    background-color: #ff69b4 !important;
+    color: #fff !important;
+}
+
+/* ----------------- */
+/* Estilos de botones */
+/* ----------------- */
+/* Estilos base para todos los botones */
+input[type="submit"], a.button, .submit-row input, .deletelink {
+    padding: 8px 15px !important;
+    font-weight: bold !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    border: none !important;
+}
+
+/* Efectos hover para botones */
+input[type="submit"]:hover, a.button:hover, 
+.submit-row input:hover, .deletelink:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+    opacity: 0.9 !important;
+}
+
+
+/* ------------------------- */
+/* Contenedores transparentes */
+/* ------------------------- */
+.content-wrapper, .main-panel, 
+.card, .box, .module {
+    background-color: rgba(255, 255, 255, 0.948) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    border: none !important;
+}
+/* Botones específicos */
+
+/* Botón SAVE - Rosa claro intensificado */
+input[name="_save"] {
+    background-color: #ff59d1 !important;  /* Original: #ff6bd1 (+15% saturación) */
+    color: #ffffff !important;
+}
+
+/* Botón DELETE - Rosa medio intensificado */
+.btn-hot-pink, a.deletelink {
+    background-color: #f27bd6 !important;  /* Original: #f28fda (+18% saturación) */
+    color: white !important;
+    font-weight: bold;
+}
+
+/* Botones azules intensificados */
+.btn-light-blue {
+    background-color: rgb(100, 203, 200) !important;  /* Original: #56e0d4 (+20% saturación) */
+    color: #ffffff !important;
+}
+
+.btn-lavender {
+    background-color: rgb(66, 215, 210) !important;  /* Original: #56e0d4 (+20% saturación) */
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+
+/* Botón ADD ANOTHER intensificado */
+input[name="_addanother"] {
+    background-color: #dd9ae5 !important;  /* Original: #d4b5df (+17% saturación) */
+    color: #ffffff !important;
+}
+
+
+
+/* Segundo botón */
+.btn:nth-child(2), .submit-row input:nth-child(2) {
+    background-color: rgb(66, 215, 210) !important;  /* Original: #56e0d4 (+20% saturación) */
+    border-color: rgb(66, 215, 210) !important;
+}
+
+/* Tercer botón */
+.btn:nth-child(3), .submit-row input:nth-child(3) {
+    background-color: #ff59d1 !important; /* rosa claro */
+    border-color: #ff59d1 !important;
+}
+
+/* Cuarto botón */
+.btn:nth-child(4), .submit-row input:nth-child(4) {
+    background-color: #ff78eb !important; /* rosa viejo */
+    border-color: #ff78eb !important;
+}
+
+/* Todos con texto blanco y efecto hover */
+.btn:hover, .submit-row input:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+
+div.col-lg-3.col-12 {
+    font: 15px Lato, -apple-system, BlinkMacSystemFont; /* Fuente y tamaño */
+    color: #333333; /* Color de texto */
+    padding: 10px 10px 10px, 0px; /* Sin padding arriba/abajo, 15px a los lados */
+}
+
+div#recent-actions-module.module {
+    color: #333333; /* Color del texto */
+    background-color: #f0f0f0; /* Blanco con opacidad (D9 = ~85%) */
+    padding: 0px 15px;
+}
+
+
+.col-lg-3.col-12 {
+    background-color: #ffffff; /* o cualquier color que te guste */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    /* Estilos base para enlaces de navegación */
+    .nav-pills .nav-link,
+    .nav-tabs .nav-link {
+        color: #fff;
+    }
+
+    /* Estados hover/focus para ambos tipos de navegación */
+    .nav-pills .nav-link:hover,
+    .nav-pills .nav-link:focus,
+    .nav-tabs .nav-link:hover,
+    .nav-tabs .nav-link:focus {
+        color: #ffd4f0;
+        opacity: 0.9;
+    }
+
+    /* Elementos abiertos/activos */
+    .nav-pills .nav-item.open .nav-link,
+    .nav-tabs .nav-item.open .nav-link,
+    .nav-pills .nav-link.active,
+    .nav-tabs .nav-link.active {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15); /* Fondo sutil para activos */
+    }
+
+    /* Estados hover/focus para elementos activos */
+    .nav-pills .nav-item.open .nav-link:hover,
+    .nav-pills .nav-item.open .nav-link:focus,
+    .nav-tabs .nav-item.open .nav-link:hover,
+    .nav-tabs .nav-item.open .nav-link:focus,
+    .nav-pills .nav-link.active:hover,
+    .nav-pills .nav-link.active:focus,
+    .nav-tabs .nav-link.active:hover,
+    .nav-tabs .nav-link.active:focus {
+        color: #fff;
+        background-color: rgba(255, 238, 255, 0.64);
+    }
+}
+
+/* Oculta el campo de contraseña en el admin */
+.field-password {
+    display: none !important;
+}
+
+/* Estilo para el botón "Buscar" de los filtros */
+button.btn.btn-light-pink {
+    background-color: #fe77df !important;  /* Rosa claro (como en tu ejemplo) */
+    color: rgb(255, 255, 255) !important;
+    border: none !important;
+    padding: 6px 12px !important;          /* Igual que en tu diseño */
+    border-radius: 4px !important;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    transition: background-color 0.3s !important;
+}
+
+/* Efecto hover */
+button.btn.btn-light-pink:hover {
+    background-color: rgb(255, 105, 180) !important;  /* Rosa más oscuro al pasar el mouse */
+}

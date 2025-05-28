@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigotes</title>
+    <link rel="stylesheet" href="../../static/CSS/login/perfil.css">
+</head>
+<body>
+<header>
+    <h1>BIGOTES</h1>
+</header>
+
+<main class="post-container">
+    <img src="../../static/img/gatito1.jpeg" alt="Gato">
+
+    <!--************************* info ******************************-->
+    <div>
+        <h2>¡Hola!</h2>
+        <p>Me llamo Bigotes, nací el 14/02/2022. Fui rescatado en Angelópolis. Mi familia se fue y me dejó en la calle. Estuve dos meses en la calle muy asustado y me adelgacé mucho.</p>
+        <p>Soy demasiado amoroso y juguetón.</p>
+
+        <ul class="estoy">
+            <li>Estoy esterilizado</li>
+            <li>Estoy vacunado</li>
+            <li>Estoy desparasitado</li>
+        </ul>
+
+        <ul class="no-estoy">
+            <li>NO TENGO leucemia felina (FeLV)</li>
+            <li>NO TENGO SIDA o inmunodeficiencia felina (VIF)</li>
+        </ul>
+    </div>
+
+
+    <!--************************* btns ******************************-->
+    <button id="adoptar-btn" class="adoptar">ADOPTAR</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Amigo adoptante</h2>
+
+            <!-- Sección de información inicial -->
+            <div id="info-section" class="modal-body">
+                <p>
+                    Recuerda que todos nuestros peluditos son rescatados. Cuando llegan al Hogar, vienen muchas veces en situaciones extremas de maltrato, desnutrición y abandono.
+                    Con tus donaciones, salvamos peluditos y les rescatamos de esas manos que no saben amar. Pero, amigo adoptante, recuerda: somos un Hogar que funciona con recursos que nos proveen seres que creen en nuestra causa.
+                    No contamos con servicios especializados. Sí tenemos veterinario, pero nuestras instalaciones no cuentan con rayos X o equipos de alta tecnología. Hacemos lo que está en nuestras manos por ellos.
+                </p>
+                <br>
+                <p>
+                    Recuerda que cuando adoptas, estás asumiendo la responsabilidad por ese ser viviente que ya se convierte en parte de tu familia. Debes llevarlo al veterinario para un examen minucioso, pues mientras tú adoptas a uno, el Hogar sostiene a más de 500.
+                    Nosotros, como Fundación, hacemos una primera evaluación y empezamos su recuperación, pero tú, como adoptante, debes continuar con esa labor.
+                </p>
+
+                <button id="btnEntiendo" class="btn">ENTIENDO</button>
+            </div>
+
+            <!-- Formulario oculto al inicio -->
+            <div>
+                <form id="formularioAdopcion">
+                    <label>Nombre *<br><input type="text" name="nombre" required></label><br>
+
+                    <label>Apellidos<br><input type="text" name="apellidos"></label><br>
+
+                    <label>Documento de Identidad *<br><input type="text" name="documento" required></label><br>
+
+                    <label>Teléfono *<br><input type="tel" name="telefono" required></label><br>
+
+                    <label>Celular *<br><input type="tel" name="celular" required></label><br>
+
+                    <label>Dirección *<br><input type="text" name="direccion" required></label><br>
+
+                    <label>Municipio *<br><input type="text" name="municipio" required></label><br>
+
+                    <label>Barrio<br><input type="text" name="barrio"></label><br>
+
+                    <label>Tipo de Vivienda *<br>
+                        <select name="tipo_vivienda" required>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                        </select>
+                    </label><br>
+
+                    <label>Estado Civil *<br>
+                        <select name="estado_civil" required>
+                            <option value="Soltero">Soltero (a)</option>
+                            <option value="Casado">Casado (a)</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </label><br>
+
+                    <label>Ocupación *<br>
+                        <select name="ocupacion" required>
+                            <option value="Empleado">Empleado</option>
+                            <option value="Estudiante">Estudiante</option>
+                            <option value="Desempleado">Desempleado</option>
+                        </select>
+                    </label><br>
+
+                    <label>Compañía *<br><input type="text" name="compañia"></label><br>
+
+                    <label>Posición<br><input type="text" name="posicion"></label><br>
+
+                    <label>Correo Electrónico *<br><input type="email" name="correo" required></label><br>
+
+                    <label>Horario de Trabajo *<br>
+                        <select name="horario_trabajo" required>
+                            <option value="Medio Tiempo">Medio Tiempo</option>
+                            <option value="Tiempo Completo">Tiempo Completo</option>
+                        </select>
+                    </label><br>
+
+                    <label>Peludito que desea adoptar *<br>
+                        <select name="tipo_mascota" required>
+                            <option value="Perrito">Perrito</option>
+                            <option value="Gatito">Gatito</option>
+                        </select>
+                    </label><br>
+
+                    <label>¿Hay niños en la casa? *<br>
+                        <select name="hay_niños" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Edad de los niños<br><input type="text" name="edad_niños"></label><br>
+
+                    <label>¿Por qué deseas adoptar? *<br>
+                        <textarea name="motivo_adopcion" required></textarea>
+                    </label><br>
+
+                    <label>¿Algún miembro de la familia es alérgico al pelo de perro o gato? *<br>
+                        <select name="alergia" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>¿En caso de que fuera SI, qué pasaría con él? *<br><textarea name="caso_alergia" required></textarea></label><br>
+
+                    <label>¿Tiene o ha tenido mascotas previamente? *<br>
+                        <select name="previas_mascotas" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Si vive en un apartamento, informe en qué piso vive:<br>
+                        <input type="text" name="piso_apartamento">
+                    </label><br>
+
+                    <label>¿Normalmente permanece la puerta de acceso abierta? *<br>
+                        <select name="puerta_abierta" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>¿Tiene mallas instaladas en las ventanas y el balcón? *<br>
+                        <select name="mallas_instaladas" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>¿Las instalaría para la adopción? *<br>
+                        <select name="instalar_mallas" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Políticas de Adopción: ¿Está de acuerdo con visitas sin previo aviso? *<br>
+                        <select name="visitas" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Se solicita un valor de $60.000. ¿Está de acuerdo? *<br>
+                        <select name="pago_adopcion" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Si la mascota no está esterilizada, ¿se compromete a hacerlo en 6 meses? *<br>
+                        <select name="compromiso_esterilizacion" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>¿Se compromete a llevar la mascota al veterinario tras la adopción? *<br>
+                        <select name="compromiso_veterinario" required>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label><br>
+
+                    <label>Mensaje *<br>
+                        <textarea name="mensaje" required></textarea>
+                    </label><br>
+
+                    <button id="btnSubir" class="btn" type="submit" >Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="gatos.html" class="volver">⬅ Ver mas gatitos</a>
+</main>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia
+        Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="js/perfil.js"></script>
+
+</body>
+</html>

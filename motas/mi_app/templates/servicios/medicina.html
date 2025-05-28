@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>medicina - Motas</title>
+    <link rel="stylesheet" href="../../static/CSS/servicios.css">
+</head>
+<body>
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<!--************************* Cabecera ******************************-->
+
+<header id="Header">
+    <img src="../../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+    </ul>
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+<!--************************* texto ******************************-->
+<h1 class="titulo">MEDICINA PREVENTIVA</h1>
+<hr>
+
+<section class="servicios-pagina">
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Mejor Prevenir</h2>
+            <p>En Motas, sabemos que la salud de tu mascota es invaluable. Es por eso que hemos hecho de la medicina preventiva veterinaria el pilar fundamental de nuestra misión. Nos apasiona poder brindarle a tu compañero peludo la mejor atención preventiva.</p>
+            <p>Contamos con un arsenal de herramientas de vanguardia para proteger a tu mascota de enfermedades potencialmente devastadoras.</p>
+            <p>Desde vacunas hasta exámenes de detección temprana, nuestro enfoque en la medicina preventiva es inquebrantable. Porque, en nuestro centro médico veterinario, creemos que la prevención es la clave para una vida larga, feliz y saludable para tu peludito.</p>
+            <p>Únete a nosotros en esta importante misión y mantén a tu mascota segura y saludable.</p>
+            <br>
+            <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos">¡HABLEMOS!</a>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/med1.webp" alt="Medicina preventiva veterinaria">
+        </div>
+
+    </section>
+    <hr>
+    <!--************************* texto ******************************-->
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/med2.webp" alt="Asesoría nutricional">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Asesoría Nutricional</h2>
+            <p>Estamos comprometidos en brindarte la asesoría más precisa y valiosa en la elección de la dieta ideal para tu mascota.</p>
+            <p>Nuestros veterinarios expertos son tus aliados para garantizar que tu compañero peludo reciba una alimentación que cumple con los más altos estándares de cantidad, calidad y sabor.</p>
+            <p>Confía en nuestros profesionales para recomendarte no solo lo que tu mascota debe comer, sino también lo que debe evitar para mantenerse saludable y en óptimas condiciones.</p>
+            <p>La prevención de la obesidad y otras cuestiones relacionadas con la nutrición son fundamentales para asegurar la salud a largo plazo de tu fiel amigo.</p>
+            <p>Nos comprometemos a mantener a tu mascota feliz y saludable a través de una medicina preventiva completa y personalizada.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Asesoría de Comportamiento</h2>
+            <p>El comportamiento de tu mascota es una ventana hacia su salud. Cualquier cambio o problema de conducta es una señal importante. Nuestros veterinarios expertos están listos para ser tus aliados en la búsqueda de soluciones.</p>
+            <p>En nuestro consultorio veterinario, nos encargamos de evaluar y diagnosticar problemas de comportamiento en tu mascota, ya que muchas enfermedades se manifiestan a través de alteraciones en la conducta.</p>
+            <p>Nuestra experiencia nos permite diseñar planes de tratamiento personalizados, asegurando que tu mascota reciba la atención que merece.</p>
+            <p>Estamos 100% comprometidos en mantener a tu mascota feliz y saludable, tanto física como emocionalmente.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/med3.webp" alt="Asesoría de comportamiento">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/med4.webp" alt="Vacunación">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Vacunación</h2>
+            <p>Las vacunas son guardianes invisibles de la salud de tu mascota, fortalecen su sistema inmunológico, creando una fortaleza de anticuerpos que los protege de enfermedades graves y altamente contagiosas.</p>
+            <p>Ofrecemos una variedad de vacunas esenciales y recomendadas, adaptadas a la especie y edad de tu mascota.</p>
+            <p>Nuestros veterinarios expertos diseñarán un plan de vacunación personalizado para garantizar que tu fiel amigo esté completamente protegido.</p>
+            <p>No escatimamos en cuidados cuando se trata de la salud de tu peludito. Tu tranquilidad y la salud de tus mascotas son nuestra prioridad número uno.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Desparasitación</h2>
+            <p>La desparasitación es un escudo esencial contra los parásitos que amenazan la salud de tu mascota, tanto por dentro como por fuera. En Motas, sabemos que esta rutina debe ser un pilar de por vida para garantizar el bienestar de tu fiel compañero.</p>
+            <p>Nuestro equipo de veterinarios son tus guías en este camino, diseñando el plan de desparasitación ideal para tu mascota, teniendo en cuenta sus necesidades específicas, su entorno y su salud general, te ofrecerán la protección necesaria.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/med5.webp" alt="Desparasitación">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/med6.webp" alt="Microchip">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Microchip</h2>
+            <p>El microchip es un dispositivo electrónico cubierto por una cápsula protectora hipoalergénica, se inserta bajo la piel, generalmente en el costado del cuello, en un proceso sin dolor ni molestias.</p>
+            <p>Cuando se activa, emite un código único, como un sello de identidad, que se relaciona con datos esenciales sobre tu mascota y tú, guardados en una base de datos.</p>
+            <p>Este código se convierte en un salvavidas en casos de extravío, accidentes o robos, permitiéndote localizar a tu fiel amigo de manera rápida y segura.</p>
+            <p>Si deseas más información o estás interesado en darle a tu mascota esta capa adicional de seguridad, no dudes en contactarnos.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Planes de Bienestar</h2>
+            <p>Nuestros Planes de Bienestar están diseñados para brindarle a tu peludito todo lo que necesita para mantener una vida óptima y prevenir enfermedades.</p>
+            <p>Cada mascota es única y requiere cuidados adaptados a sus necesidades específicas.</p>
+            <p>Los planes de bienestar de Motas se ajustan de manera precisa a las particularidades de tu compañero, proporcionándole cobertura en medicina preventiva a lo largo de todas las etapas de su vida.</p>
+            <p>Estamos listos para brindar el amor y cuidado que tu mascota merece, por eso diseñamos planes de bienestar para cada fase de su vida:</p>
+            <ul>
+                <li><strong>Mímame</strong> para cachorros</li>
+                <li><strong>Acompáñame</strong> para adultos</li>
+                <li><strong>Cuídame</strong> para los años dorados</li>
+            </ul>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/med7.webp" alt="Planes de bienestar">
+        </div>
+    </section>
+    <hr>
+
+
+    <!--************************* Contador ******************************-->
+    <section class="contador">
+        <div class="item-contador">
+            <span class="number" data-target="+300">0</span>
+            <p>Mascotas atendidas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="  +8  ">0</span>
+            <p>Años de Experiencia</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="+120">0</span>
+            <p>Cirugías realizadas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target=" +15">0</span>
+            <p>Servicios especializados</p>
+        </div>
+    </section>
+</section>
+
+<!--************************* Botton WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../../static/img/icoFB.png" alt="Facebook">
+        </a>
+    </div>
+
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                <li><a href="#">Blog/Noticias</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia</p>
+    <p>Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../../static/js/servicios.js"></script>
+</body>
+</html>

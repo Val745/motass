@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Motas</title>
+    <link rel="stylesheet" href="../static/CSS/nosotros.css">
+</head>
+<body>
+
+<!--************************* Cabecera ******************************-->
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<header id="Header">
+    <img src="../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
+    </ul>
+
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+
+<!--************************* Sección Nosotros con Imagen de Fondo ******************************-->
+<section class="nosotros-hero">
+    <div class="nosotros-hero-contenido">
+        <h1>Somos el centro <br>medico Canino<br> y Felino <span class="motas">Motas</span></h1>
+        <p>Especializados en perros y gatos. Brindamos atención médica 24/7 en Itagüí, con soporte para emergencias y asesoría preventiva para asegurar la salud y bienestar de tu mascota.</p>
+    </div>
+</section>
+
+<!--************************* Sección "Por Qué Elegirnos" con Imagen ******************************-->
+<section class="por-que-elegirnos">
+    <div class="por-que-elegirnos-contenido">
+        <div class="texto">
+            <h2>¿POR QUÉ ELEGIRNOS?</h2>
+            <p>Nos destacamos por nuestro equipo de expertos dedicados, tecnología avanzada y un enfoque integral en el bienestar de tu mascota. Ofrecemos servicios personalizados, atención 24/7 y un ambiente acogedor donde tu mascota siempre será nuestra prioridad. Con nosotros, tu mascota está en las mejores manos.</p>
+            <div class="razones">
+                <div class="razon">
+                    <h3>Cuidado de Mascotas</h3>
+                    <p>Brindamos atención integral y personalizada para garantizar la salud y felicidad de tu mascota.</p>
+                </div>
+            </div>
+            <div class="razones">
+                <div class="razon">
+                    <h3>Atención 24/7</h3>
+                    <p>Estamos disponibles en todo momento para emergencias y consultas, porque sabemos que las mascotas no tienen horarios.</p>
+                </div>
+            </div>
+            <div class="razones">
+                <div class="razon">
+                    <h3>Tienda de Mascotas</h3>
+                    <p>En nuestra <a class="links" href="https://maps.app.goo.gl/im1sYJz9hvPMdKNB8" target="_blank">tienda fisica</a> ofrecemos productos de alta calidad para el cuidado, alimentación y entretenimiento de tu mascota.</p>
+                </div>
+            </div>
+        </div>
+        <div class="imagen">
+            <img src="../static/img/Elepic.png" alt="Por Qué Elegirnos">
+        </div>
+    </div>
+</section>
+
+<!--************************* Sección Nosotros (Contenido Principal) ******************************-->
+<section class="nosotros">
+    <div class="nosotros-contenido">
+        <h2>NOSOTROS</h2>
+        <p>En <strong>Motas</strong>, nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales altamente capacitados está comprometido con la salud y el bienestar de los animales, ofreciendo servicios de alta calidad y atención personalizada. Creemos que cada mascota merece recibir el mejor trato y trabajamos con pasión para garantizar su felicidad y bienestar.</p>
+        <p>Nuestra <strong>misión</strong> es ser tu aliado en el cuidado de tus mascotas, proporcionando servicios veterinarios integrales, desde consultas de rutina hasta cirugías especializadas. Contamos con tecnología avanzada y un equipo comprometido que se esfuerza por ofrecer diagnósticos precisos y tratamientos efectivos, asegurando que cada animal reciba la mejor atención posible en cada etapa de su vida.</p>
+        <p>Además, en Motas no solo nos preocupamos por el bienestar de las mascotas con dueño, sino también por aquellos animales que aún buscan un hogar. Por ello, hemos desarrollado nuestra sección "Adopta", donde promovemos la adopción responsable de perros y gatos en busca de una segunda oportunidad. A través de esta iniciativa, facilitamos el encuentro entre familias y mascotas que necesitan amor y cuidado, asegurándonos de que cada adopción se realice de manera informada y responsable. Creemos firmemente que todos los animales merecen un hogar lleno de cariño, y trabajamos en conjunto con refugios y protectoras para hacer posible esta hermosa labor.</p>
+        <p>En Motas, cada acción está guiada por nuestro amor y respeto hacia los animales, con el objetivo de mejorar su calidad de vida y fortalecer el vínculo entre las mascotas y sus dueños.</p>
+        <section class="contenedor-posts">
+            <h2>NUESTRO BLOG: <br>Contenido para el cuidado de tu mascota</h2>
+            <div class="post-grid">
+                <article class="post">
+                    <img src="../static/img/blog1.png" alt="Veterinaria para perros">
+                    <h3><a href="blog/cuidado-perros.html">Cuidado veterinario para perros</a></h3>
+                    <p>Consejos esenciales para mantener la salud de tu perro y prevenir enfermedades.</p>
+                    <a href="blog/cuidado-perros.html" class="leer-mas">Ver más</a>
+                </article>
+
+                <article class="post">
+                    <img src="../static/img/blog2.png" alt="Enfermedades en perros">
+                    <h3><a href="blog/enfermedades-perros.html">Enfermedades comunes en perros</a></h3>
+                    <p>Aprende sobre las enfermedades más comunes en los perros y cómo prevenirlas.</p>
+                    <a href="blog/enfermedades-perros.html" class="leer-mas">Ver más</a>
+                </article>
+
+                <article class="post">
+                    <img src="../static/img/blog3.png" alt="Salud en gatos">
+                    <h3><a href="blog/salud-felina.html">Salud felina y cuidados</a></h3>
+                    <p>Descubre los mejores consejos para mantener a tu gato sano y feliz.</p>
+                    <a href="blog/salud-felina.html" class="leer-mas">Ver más</a>
+                </article>
+
+                <article class="post">
+                    <img src="../static/img/blog4.png" alt="Vacunas para gatos">
+                    <h3><a href="blog/vacunacion-gatos.html">Vacunación en gatos</a></h3>
+                    <p>Lista de vacunas esenciales para proteger a tu gato de enfermedades graves.</p>
+                    <a href="blog/vacunacion-gatos.html" class="leer-mas">Ver más</a>
+                </article>
+            </div>
+        </section>
+
+        <div class="nosotros-equipo">
+            <h3>NUESTRO EQUIPO</h3>
+            <div class="equipo-grid">
+                <div class="equipo-miembro">
+                    <img src="../static/img/equipo.png" alt="Miembro del equipo 1">
+                    <h4>Dr. Juan Pérez</h4>
+                    <p>Veterinario especialista en cirugía</p>
+                </div>
+                <div class="equipo-miembro">
+                    <img src="../static/img/equipo.png" alt="Miembro del equipo 2">
+                    <h4>Dra. María Gómez</h4>
+                    <p>Veterinaria especialista en dermatología</p>
+                </div>
+                <div class="equipo-miembro">
+                    <img src="../static/img/equipo.png" alt="Miembro del equipo 3">
+                    <h4>Dr. Carlos López</h4>
+                    <p>Veterinario especialista en cardiología</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--************************* Reseñas ******************************-->
+<div class="container-reseñas">
+    <h2>¿QUE DICEN LOS DUEÑOS DE NUESTROS PACIENTES?</h2>
+
+    <div class="carousel-container">
+        <button id="prev" class="nav-btn">&#10094;</button>
+        <div class="carousel">
+            <img src="../static/img/res1.png" alt="Reseña 1">
+            <img src="../static/img/res2.png" alt="Reseña 2">
+            <img src="../static/img/res3.png" alt="Reseña 3">
+            <img src="../static/img/res4.png" alt="Reseña 4">
+            <img src="../static/img/res5.png" alt="Reseña 5">
+            <img src="../static/img/res6.png" alt="Reseña 6">
+        </div>
+        <button id="next" class="nav-btn">&#10095;</button>
+    </div>
+
+    <div class="brand">
+        <img src="../static/img/LogoMotas.png" alt="Motas">
+        <div>
+            <p class="motasre">Motas</p>
+            <div class="stars">★★★★☆</div>
+            <p>16 reseñas Google</p>
+            <a href="https://www.google.com/maps/place/Centro+M%C3%A9dico+Canino+y+Felino+motas/@6.168299,-75.6115292,15z/data=!4m8!3m7!1s0x8e4683ab752bb5df:0xd4fa73691a62a50b!8m2!3d6.1682882!4d-75.611558!9m1!1b1!16s%2Fg%2F11fl8_kl4v?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-reseñas">Escribe una reseña</a>
+        </div>
+    </div>
+    <!--************************* Botton WhatsApp ******************************-->
+    <a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+        <div class="arrow"></div>
+        <div class="whatsapp-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <span class="whatsapp-label">Escríbenos</span>
+        </div>
+    </a>
+
+    <!--************************* ubicación ******************************-->
+    <div id="modal-contacto" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Contáctanos</h2>
+            <button class="emergency">Llama a la línea de emergencia</button>
+            <button class="option">Asesoría Médica</button>
+            <button class="option">Llámanos ahora</button>
+            <button class="option">Agenda tu cita</button>
+        </div>
+    </div>
+
+    <!--************************* Modal de Contacto ******************************-->
+
+    <div class="ubicacion">
+        <a href="https://maps.app.goo.gl/XuUnp8azmBK7Lmzg9" target="_blank">
+            <img src="../static/img/ubicacionPic.png" alt="Ubicación">
+        </a>
+        <div class="info-sede">
+            <h2>NUESTRA SEDE</h2>
+            <p><strong>Dirección:</strong> Calle 49B #68-18</p>
+            <p>Sector Estadio, Medellín, Colombia.</p>
+            <p><strong>📞 Línea de atención telefónica:</strong> (+57) 311 302 0495</p>
+            <p><strong>📱 Línea de atención celular:</strong> (+57) 311 302 0495</p>
+        </div>
+    </div>
+
+
+
+    <!--************************* redes ******************************-->
+    <section class="nuestras-redes">
+        <h2>Nuestras redes</h2>
+        <p>Síguenos y descubre nuestro contenido de interés:</p>
+        <div class="redes-sociales">
+            <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+                <img src="../static/img/icoIG.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+                <img src="../static/img/icoFB.png" alt="Facebook">
+            </a>
+
+        </div>
+
+        <div class="redes-container">
+            <!-- Atención 24 horas -->
+            <div class="redes-section">
+                <h3>ATENCIÓN 24 HORAS</h3>
+                <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+                <p>
+
+                </p>
+                <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+            </div>
+
+            <!-- Servicios -->
+            <div class="redes-section">
+                <h3>SERVICIOS</h3>
+                <ul>
+                    <li><a href="#">Ayudas Diagnósticas</a></li>
+                    <li><a href="#">Hospitalización</a></li>
+                    <li><a href="#">Urgencias 24 Horas</a></li>
+                    <li><a href="#">Cirugía</a></li>
+                    <li><a href="#">Medicina Preventiva</a></li>
+                    <li><a href="#">Consulta</a></li>
+                    <li><a href="#">Trámite de viaje</a></li>
+                    <li><a href="#">Laboratorio Clínico</a></li>
+                </ul>
+            </div>
+
+            <!-- Información -->
+            <div class="redes-section">
+                <h3>INFORMACIÓN</h3>
+                <ul>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                    <li><a href="#">Blog/Noticias</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--************************* Footer ******************************-->
+    <footer class="footer" id="footer">
+        <p>&copy; Motas 2025 © Medellín, Colombia
+            Diseño y desarrollo por M. X. V. © 2025</p>
+    </footer>
+
+    <script src="../static/js/nosotros.js"></script>
+</body>
+</html>

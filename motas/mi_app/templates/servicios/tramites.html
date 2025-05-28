@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tramites - Motas</title>
+    <link rel="stylesheet" href="../../static/CSS/servicios.css">
+</head>
+<body>
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<!--************************* Cabecera ******************************-->
+
+<header id="Header">
+    <img src="../../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+    </ul>
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+<!--************************* texto ******************************-->
+<h1 class="titulo">TRÁMITES</h1>
+<hr>
+
+<section class="servicios-pagina">
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Trámites de Viaje para Mascotas</h2>
+            <p>Ir con tu mejor amigo a todos los destinos nacionales e internacionales es un sueño. Te ayudamos a realizar todos los trámites de viaje para mascotas, chequeos y certificaciones necesarias.</p>
+            <p>Nos encargamos del certificado médico internacional, vacunas o refuerzo de vacunas, serología y demás servicios veterinarios que requieres para destinos nacionales e internacionales.</p>
+            <p>¡Viaja seguro con tu mascota!</p>
+            <p>Te ayudamos con todos los requisitos veterinarios que necesites para viajar con tu peludo. Ten la tranquilidad de obtener certificados seguros, gracias a la experiencia de nuestro equipo.</p>
+            <p>Trámites de viaje para mascotas, servicio para personas ubicadas en Medellín.</p>
+            <br>
+            <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos">¡HABLEMOS!</a>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/tra1.webp" alt="Trámites de viaje para mascotas">
+        </div>
+
+    </section>
+    <hr>
+    <!--************************* texto ******************************-->
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/tra2.webp" alt="Certificado médico nacional">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Certificado Médico Nacional</h2>
+            <p>Realizamos el certificado médico veterinario para viajes a nivel nacional, verificamos el estado de salud de tu mascota para que viaje sin inconvenientes.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Certificado Médico Internacional</h2>
+            <p>Nuestro veterinario realiza el chequeo médico, verifica su plan de vacunación y desparasitación y certifica que tu mascota está en buenas condiciones para su viaje internacional.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/tra3.webp" alt="Certificado médico internacional">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/tra4.webp" alt="Toma de serologías">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Toma de Serologías</h2>
+            <p>Realiza el estudio de anticuerpos en la sangre de tu peludito y previene la infección de patógenos para que se transporte internacionalmente sin problemas.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Actualización de Plan de Vacunas</h2>
+            <p>Verificamos y actualizamos el plan de vacunación y desparasitación para que tu mascota pueda viajar segura y sin inconvenientes.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/tra5.webp" alt="Actualización de plan de vacunas">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/tra6.webp" alt="Certificado ICA para mascotas">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Certificado ICA para mascotas</h2>
+            <p>Gestión documental para la Expedición del Certificado de Inspección Sanitaria (CIS) correspondiente emitido por el ICA.</p>
+            <p>Una vez se cuente con el certificado de salud y el certificado de vacunación de la mascota, el Médico Veterinario o Médico Veterinario y Zootecnista inscrito ante el ICA, realizará la creación de la solicitud del certificado de inspección sanitaria en el SISPAP, para lo cual ingresará los datos del viajero y de la mascota, así como anexará los soportes anteriormente descritos y para los casos requeridos el resultado de la prueba de anticuerpos de la rabia o certificación de la rabia.</p>
+            <p>Una vez adelantado este proceso, el SISPAP arrojará un número único de solicitud del certificado. La solicitud del certificado de inspección sanitaria – CIS y los documentos soporte tendrán vigencia para ser utilizados dentro de los cinco (5) días calendario a partir de su momento de creación.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Implantación de Microchip</h2>
+            <p>Implantación de microchip que cumple con los requisitos para viajes internacionales, ya que está certificado con las normas ISO 11784, ISO 11785 y la ISO 14223. Por lo que puede ser leído con cualquier lector de microchip del mercado.</p>
+            <p>Además, cuenta con una placa de identificación externa con código QR que brilla en la oscuridad y al ser escaneada aumenta la posibilidad de encontrar a la mascota en caso de pérdida.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/tra7.webp" alt="Implantación de microchip">
+        </div>
+    </section>
+    <hr>
+
+    <!--************************* Contador ******************************-->
+    <section class="contador">
+        <div class="item-contador">
+            <span class="number" data-target="+300">0</span>
+            <p>Mascotas atendidas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="  +8  ">0</span>
+            <p>Años de Experiencia</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="+120">0</span>
+            <p>Cirugías realizadas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target=" +15">0</span>
+            <p>Servicios especializados</p>
+        </div>
+    </section>
+</section>
+
+<!--************************* Botton WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../../static/img/icoFB.png" alt="Facebook">
+        </a>
+    </div>
+
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                <li><a href="#">Blog/Noticias</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia</p>
+    <p>Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../../static/js/servicios.js"></script>
+</body>
+</html>

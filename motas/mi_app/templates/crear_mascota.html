@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motas</title>
+    <link rel="stylesheet" href="../static/CSS/crear_mascota.css">
+
+</head>
+
+<body>
+    
+
+<!--************************* Cabecera ******************************-->
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+
+<header id="Header">
+    <img src="../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="index.html">Inicio</a></li>
+        <li class="item"><a href="{% url 'citas' %}">citas</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
+    </ul>
+
+</header>
+
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+    <h1>¡REGISTRA TU MASCOTA!</h1>
+    {{error}}
+    <form action="/crear_mascota/" method="POST">
+        {% csrf_token %}
+        <h2 for="{{ form.nombre.id_for_label }}">Nombre</h2>
+        {{ form.nombre }}
+        
+        <h2 for="{{ form.especie.id_for_label }}">Especie</h2>
+        {{ form.especie }}
+        
+        <h2 for="{{ form.raza.id_for_label }}">Raza</h2>
+        {{ form.raza }}
+        
+        <h2 for="{{ form.edad.id_for_label }}">Edad en meses</h2>
+        {{ form.edad }}
+        
+        <h2 for="{{ form.sexo.id_for_label }}">Sexo</h2>
+        {{ form.sexo }}
+        
+
+    
+        <button class="Guardar-btn">Guardar</button>
+    </form>
+    
+
+</body>
+</html>

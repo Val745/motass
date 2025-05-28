@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motas</title>
+    <link rel="stylesheet" href="../static/CSS/style.css?v=2">
+</head>
+
+<body>
+    
+    {% include 'header.html' %}
+
+
+<!--***************************** Carrusel **********************************-->
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../static/img/CarMot1.png" alt="pintura griega">
+            </div>
+            <div class="carousel-item">
+                <img src="../static/img/CarMot2.png" alt="pintura griega">
+            </div>
+            <div class="carousel-item">
+                <img src="../static/img/CarMot3.png" alt="pintura griega">
+            </div>
+        </div>
+        <button class="carousel-control-prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control-next" onclick="nextSlide()">&#10095;</button>
+    </div>
+</div>
+
+<!--************************* 24 horas ******************************-->
+<section class="veterinaria">
+    <h2>Veterinaria <span class="resaltado">24 Horas</span> en Medellín</h2>
+    <div class="servicios">
+        <a href="{% url 'ayudas' %}" class="servicio">
+            <img src="../static/img/icon1.png" alt="">
+            <p>Ayudas Diagnósticas</p>
+        </a>
+        <a href="{% url 'hospitalizacion' %}" class="servicio">
+            <img src="../static/img/icon2.png" alt="">
+            <p>Hospitalización</p>
+        </a>
+        <a href="{% url 'urgencias' %}" class="servicio">
+            <img src="../static/img/icon3.png" alt="">
+            <p>Urgencias 24 Horas</p>
+        </a>
+        <a href="{% url 'cirugia' %}" class="servicio">
+            <img src="../static/img/icon4.png" alt="">
+            <p>Cirugía Veterinaria</p>
+        </a>
+        <a href="{% url 'medicina' %}" class="servicio">
+            <img src="../static/img/icon5.png" alt="">
+            <p>Medicina Preventiva</p>
+        </a>
+        <a href="{% url 'consulta' %}" class="servicio">
+            <img src="../static/img/icon6.png" alt="">
+            <p>Consulta Veterinaria</p>
+        </a>
+        <a href="{% url 'tramites' %}" class="servicio">
+            <img src="../static/img/icon7.png" alt="">
+            <p>Trámite de Viaje</p>
+        </a>
+        <a href="{% url 'laboratorio' %}" class="servicio">
+            <img src="../static/img/icon8.png" alt="">
+            <p>Laboratorio Clínico</p>
+        </a>
+    </div>
+</section>
+
+    </div>
+
+    <div class="imagenes">
+        <img src="doctor-perros.jpg" class="foto1" alt="">
+        <img src="clinica.jpg" class="foto2" alt="">
+    </div>
+</section>
+
+<!--************************* Sección de Agenda tu Consulta ******************************-->
+
+<section class="consulta-container">
+    <div class="consulta-info">
+        <h2 class="consulta-titulo">Agenda tu consulta</h2>
+        <p class="consulta-descripcion">Medicina para perros y gatos con atención médica 24 horas, los 7 días de la semana.</p>
+        
+        {% if user.is_authenticated %}
+            <form action="{% url 'citas' %}" method="get" style="display: inline;">
+                <button type="submit" class="boton-consulta" id="ir-a-citas">AGENDATE</button>
+            </form>
+        {% else %}
+            <!-- Para usuarios no logueados -->
+            <button id="abrir-modal-cita" class="boton-consulta">AGENDATE</button>
+        {% endif %}
+    </div>
+    <div class="consulta-imagen">
+        <img src="../static/img/cita.png" alt="Veterinaria con perro">
+    </div>
+</section>
+
+<!-- Modal (solo para no logueados) -->
+{% if not user.is_authenticated %}
+<!-- Modal -->
+<div id="consulta-modal" class="modal">
+    <div class="modal-content">
+      <h2>Inicia sesión para agendar la cita</h2>
+      <a href="{% url 'signin' %}" class="modal-button">Iniciar Sesión</a>
+    </div>
+  </div>
+  
+</div>
+{% endif %}
+<!--************************* tienda ******************************-->
+
+<section class="visitanos">
+    <div class="visitanos__imagen">
+        <img src="../static/img/tiendapic.png" alt="Nuestra tienda">
+    </div>
+    <div class="visitanos__contenido">
+        <h2>CONOCE UN POCO DE NUESTRA TIENDA</h2>
+        <h1> <span>Visítanos</span> </h1>
+        <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos">Pregunta por nuestros productos</a>
+    </div>
+</section>
+
+<!--************************* Contador ******************************-->
+<section class="contador">
+    <div class="item-contador">
+        <span class="number" data-target="+300">0</span>
+        <p>Mascotas atendidas</p>
+    </div>
+    <div class="item-contador">
+        <span class="number" data-target="+8">0</span>
+        <p>Años de Experiencia</p>
+    </div>
+    <div class="item-contador">
+        <span class="number" data-target="+120">0</span>
+        <p>Cirugías realizadas</p>
+    </div>
+    <div class="item-contador">
+        <span class="number" data-target="+15">0</span>
+        <p>Servicios especializados</p>
+    </div>
+</section>
+
+<!--************************* Blog ******************************-->
+
+<section class="contenedor-posts">
+    <h2>Contenido para el cuidado de tu mascota</h2>
+    <div class="post-grid">
+        <article class="post">
+            <img src="../static/img/blog1.png" alt="Veterinaria para perros">
+            <h3><a href="../blog/cuidado_perros/">Cuidado veterinario para perros</a></h3>
+            <p>Consejos esenciales para mantener la salud de tu perro y prevenir enfermedades.</p>
+            <a href="../blog/cuidado_perros/" class="leer-mas">Ver más</a>
+        </article>
+        <article class="post">
+            <img src="../static/img/blog2.png" alt="Enfermedades en perros">
+            <h3><a href="../blog/enfermedades_perros/">Enfermedades comunes en perros</a></h3>
+            <p>Aprende sobre las enfermedades más comunes en los perros y cómo prevenirlas.</p>
+            <a href="../blog/enfermedades_perros/" class="leer-mas">Ver más</a>
+        </article>
+        <article class="post">
+            <img src="../static/img/blog3.png" alt="Salud en gatos">
+            <h3><a href="../blog/salud_felina/">Salud felina y cuidados</a></h3>
+            <p>Descubre los mejores consejos para mantener a tu gato sano y feliz.</p>
+            <a href="../blog/salud_felina/" class="leer-mas">Ver más</a>
+        </article>
+        <article class="post">
+            <img src="../static/img/blog4.png" alt="Vacunas para gatos">
+            <h3><a href="../blog/vacunacion_gatos/">Vacunación en gatos</a></h3>
+            <p>Lista de vacunas esenciales para proteger a tu gato de enfermedades graves.</p>
+            <a href="../blog/vacunacion_gatos/" class="leer-mas">Ver más</a>
+        </article>
+    </div>
+</section>
+
+
+
+<!--************************* Formulario de Mensaje ******************************-->
+
+<div class="contenedor-ubi">
+    <div class="formulario">
+        <h2>Escríbenos</h2>
+        <p>Déjanos tus datos, nos pondremos en contacto contigo.</p>
+        <form action="enviar.php" method="post">
+            <input type="text" name="nombre" placeholder="Nombre*" required>
+            <input type="tel" name="telefono" placeholder="Teléfono*" required>
+            <input type="email" name="email" placeholder="Correo electrónico*" required>
+            <input type="text" name="asunto" placeholder="Asunto">
+            <textarea name="mensaje" placeholder="Mensaje"></textarea>
+            <label>
+                <input type="checkbox" required>
+                Acepto las políticas de privacidad del sitio web.
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <!--************************* Ubicación ******************************-->
+    <div class="ubicacion">
+        <a href="https://maps.app.goo.gl/XuUnp8azmBK7Lmzg9" target="_blank">
+            <img src="../static/img/ubicacionPic.png" alt="Ubicación">
+        </a>
+        <div class="info-sede">
+            <h2>NUESTRA SEDE</h2>
+            <p><strong>Dirección:</strong> Calle 49B #68-18</p>
+            <p>Sector Estadio, Medellín, Colombia.</p>
+            <p><strong>📞 Línea de atención telefónica:</strong> (+57) 311 302 0495</p>
+            <p><strong>📱 Línea de atención celular:</strong> (+57) 311 302 0495</p>
+        </div>
+    </div>
+</div>
+
+<!--************************* Redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../static/img/icoFB.png" alt="Facebook">
+        </a>
+    </div>
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="adopta.html">Adopta</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia</p>
+    <p>Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>

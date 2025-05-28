@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>urgencias - Motas</title>
+    <link rel="stylesheet" href="../../static/CSS/servicios.css">
+</head>
+<body>
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<!--************************* Cabecera ******************************-->
+
+<header id="Header">
+    <img src="../../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+    </ul>
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+<!--************************* texto ******************************-->
+<h1 class="titulo">URGENCIAS</h1>
+<hr>
+
+<section class="servicios-pagina">
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Urgencias Veterinarias 24 Horas</h2>
+            <p>En Motas, la salud de tu mascota es una prioridad; es por eso que nuestro servicio de urgencias veterinarias 24 horas está diseñado para brindarle a tu mascota una atención oportuna cuando más lo necesita.</p>
+            <p>Entendemos que las urgencias veterinarias pueden ocurrir en cualquier momento, por eso, sin importar el horario, tenemos a tu disposición un equipo interdisciplinario, experto y capacitado para atender cualquier emergencia con tu mascota.</p>
+            <p>Te aseguramos que, ante alguna eventualidad con la salud de tu compañero fiel, él se sentirá como en casa.</p>
+            <br>
+            <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos">¡HABLEMOS!</a>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/urg1.webp" alt="Perro para adopción">
+        </div>
+
+    </section>
+    <hr>
+    <!--************************* texto ******************************-->
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/urg2.webp" alt="Perro para adopción">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Atención inmediata y profesional</h2>
+            <p>En nuestro centro veterinario, entendemos que tu mascota es parte de tu familia y merece la mejor atención en todo momento.</p>
+            <p>Nuestro equipo de veterinarios y auxiliares veterinarios está disponible las 24 horas del día, los 7 días de la semana, para atender cualquier emergencia que pueda surgir.</p>
+            <p>Ya sea que tu mascota sufra un accidente, tenga alguna enfermedad repentina o cualquier otro problema de salud, puedes confiar en nosotros para proporcionar una atención inmediata y profesional.</p>
+        </div>
+    </section>
+    <hr>
+
+    <section class="serviciosinfo-container">
+        <div class="texto-serviciosinfo">
+            <h2>Expertos en todas las especialidades</h2>
+            <p>Nuestra clínica veterinaria en Medellín cuenta con un equipo de especialistas altamente calificados en diversas áreas de la medicina veterinaria.</p>
+            <p>Desde cirugía hasta medicina preventiva, laboratorio clínico y hospitalización, tenemos todas las especialidades cubiertas para asegurarnos de que tu mascota reciba la atención y el tratamiento que necesita, en un solo lugar.</p>
+        </div>
+        <div class="imagen-serviciosinfo">
+            <img src="../../static/img/urg3.webp" alt="Perro para adopción">
+        </div>
+    </section>
+    <hr>
+
+    <section class="servicios3-container">
+        <div class="imagen-servicios3">
+            <img src="../../static/img/urg4.webp" alt="Perro para adopción">
+        </div>
+        <div class="texto-servicios3">
+            <h2>Nuestro Compromiso</h2>
+            <p>¡Tu tranquilidad es nuestra prioridad!</p>
+            <p>Sabemos la angustia que genera enfrentar una emergencia con tu mascota, por eso estamos listos para brindarte apoyo, atención y soluciones de la manera más ágil posible.</p>
+            <p>Nuestro equipo de profesionales te mantendrá informado en cada paso del proceso, sobre el estado y recuperación de tu peludito, respondiendo a cada una de tus inquietudes.</p>
+            <p>Nos esforzamos por crear un ambiente cálido y amigable en el que tú y tu mascota se sientan completamente tranquilos.</p>
+        </div>
+    </section>
+    <hr>
+
+    <!--************************* Contador ******************************-->
+    <section class="contador">
+        <div class="item-contador">
+            <span class="number" data-target="+300">0</span>
+            <p>Mascotas atendidas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="  +8  ">0</span>
+            <p>Años de Experiencia</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target="+120">0</span>
+            <p>Cirugías realizadas</p>
+        </div>
+        <div class="item-contador">
+            <span class="number" data-target=" +15">0</span>
+            <p>Servicios especializados</p>
+        </div>
+    </section>
+</section>
+
+<!--************************* Botton WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../../static/img/icoFB.png" alt="Facebook">
+        </a>
+    </div>
+
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                <li><a href="#">Blog/Noticias</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia</p>
+    <p>Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../../static/js/servicios.js"></script>
+</body>
+</html>

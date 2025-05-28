@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/CSS/signup.css">
+
+  <title>Registro - Motas</title>
+</head>
+<body>
+
+
+<!--************************* Cabecera ******************************-->
+
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<header id="Header">
+    <img src="../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
+    </ul>
+
+</header>
+
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+    {{error}}
+    <div class="container-login">
+        <div class="image-section">
+          <img src="../static/img/login.png" alt="Illustration">
+        </div>
+        <div class="form-section"><!-- Cambia el action del formulario -->
+            <form action="{% url 'signin' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <h2 for="{{ form.username.id_for_label }}">Email:</h2>
+                    {{ form.username }}
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <h2 for="{{ form.password.id_for_label }}">Contraseña:</h2>
+                    {{ form.password }}
+                </div>
+                <p class="forgot-password">
+                    <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+                </p>
+                <br>
+                <button type="submit" class="signup-btn">Iniciar Sesión</button>                
+                <p class="login-redirect">
+                    ¿No tienes cuenta? <a href="{% url 'signup' %}">Regístrate</a>
+                </p>
+            </form>
+       
+</body>
+</html>

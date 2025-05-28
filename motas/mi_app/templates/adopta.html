@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motas</title>
+    <link rel="stylesheet" href="../static/CSS/adopta.css">
+</head>
+
+<body>
+
+
+<!--************************* Cabecera ************************* *****-->
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
+
+<header id="Header">
+    <img src="../static/img/LogoMotas.png" class="logo">
+
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+    </label>
+
+    <ul class="menu">
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+        <li class="item" id="contactanos-btn">Contáctanos</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
+    </ul>
+
+</header>
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+    <div class="modal-logincontent">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><strong>Contraseña:</strong></label>
+            <input type="password" id="password" name="password" required>
+            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+            <br>
+
+            <button class="iniciar">Iniciar Sesión</button>
+            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+            <button class="option" id="openRegisterModal">Regístrate</button>
+
+        </form>
+    </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+    <div class="modal-registercontent">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+
+            </select>
+
+            <button class="sign">Registrarse</button>
+        </form>
+    </div>
+</div>
+<!--************************* Botton WhatsApp ******************************-->
+
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+    <div class="arrow"></div>
+    <div class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="whatsapp-label">Escríbenos</span>
+    </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contáctanos</h2>
+        <button class="emergency">Llama a la línea de emergencia</button>
+        <button class="option">Asesoría Médica</button>
+        <button class="option">Llámanos ahora</button>
+        <button class="option">Agenda tu cita</button>
+    </div>
+</div>
+
+<!--************************* carrusel ******************************-->
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../static/img/CarAd1.png" alt="pintura griega">
+            </div>
+            <div class="carousel-item">
+                <img src="../static/img/CarAd2.png" alt="pintura griega">
+            </div>
+        </div>
+        <button class="carousel-control-prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control-next" onclick="nextSlide()">&#10095;</button>
+    </div>
+</div>
+<!--*********************** Información sobre Adopción ****************************-->
+<section class="adopcion-container">
+    <div class="texto-adopcion">
+        <h2>TRANSFORMA UNA VIDA</h2>
+        <p>Dar una segunda oportunidad a un peludo es un acto de amor. En nuestro refugio, encontrarás perros y gatos que esperan un hogar lleno de cariño. Adoptar no solo cambia su vida, sino también la tuya, llenándola de amor y compañía incondicional.</p>
+
+        <p>Cada animal ha sido revisado por veterinarios, está vacunado y listo para formar parte de una familia. Si buscas un compañero fiel, visita nuestro refugio y deja que un amigo especial encuentre su lugar en tu corazón.</p>
+    </div>
+    <div class="imagen-adopcion">
+        <img src="../static/img/adopPic.png" alt="Perro para adopción">
+    </div>
+</section>
+<!--*********************** btns adopt ****************************-->
+<div class="botones-adopcion">
+    <a href="https://api.whatsapp.com/send/?phone=573113020495&text&type=phone_number&app_absent=0"  target="_blank" class="btn-adoptar btn-perros">PREGUNTA POR NUESTROS ANIMALITOS</a>
+</div>
+
+
+<!--************************* Contador ******************************-->
+
+<section class="contador">
+    <div class="item-contador">
+        <span class="number" data-target="+13">0</span>
+        <p>PERRITOS CON HOGAR</p>
+    </div>
+    <div class="item-contador">
+        <span class="number" data-target="+17">0</span>
+        <p>GATITOS CON HOGAR</p>
+    </div>
+</section>
+
+<!--*********************** Ayuda ****************************-->
+
+<section class="ayuda-section">
+    <div class="ayuda-container">
+        <div class="ayuda-text-container">
+            <h2 class="ayuda-title">¿Quieres Ayudar?</h2>
+            <p class="ayuda-text">Existen muchas formas de ayudarnos a seguir con nuestra labor:</p>
+            <div class="ayuda-donaciones">
+                <h3>Aportando con donaciones</h3>
+                <div class="ayuda-contenido">
+                    <ul>
+                        <li>A Nequi N° 1234567890 </li>
+                        <a href="https://www.nequi.com.co/personas/usa-tu-plata/transfiya" target="_blank"> ¿Cómo hacerlo?</a>
+                        <li>A Bancolombia (Cuenta de Ahorros) 12345678900 </li>
+                        <a href="https://www.youtube.com/watch?v=xMRW-zuy5ZQ" target="_blank"> ¿Cómo hacerlo?</a>
+                        <li>A Daviplata N° 1234567890 </li>
+                        <a href="https://www.youtube.com/watch?v=I60Lkl0tG1g" target="_blank"> ¿Cómo hacerlo?</a>
+                        <li>En efectivo o especie en nuestra sede</li>
+                        <a href="https://maps.app.goo.gl/im1sYJz9hvPMdKNB8" target="_blank"> ¿Dónde es?</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="ayuda-donaciones">
+                <h3>Siendo voluntario</h3>
+                <div class="ayuda-contenido">
+                    <ul>
+                        <li>
+                            <a href="https://wa.me/573113020495" target="_blank">Escríbenos </a> &nbsp; para conocer cómo puedes ayudar.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ayuda-donaciones">
+                <h3>Difundiendo nuestra labor</h3>
+                <div class="ayuda-contenido">
+                    <ul>
+                        <li>
+                            <button class="btn-compartir" onclick="compartirPagina()">Comparte</button> nuestras redes y contenido con tus amigos y familiares.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- La imagen ahora está fuera del contenedor de texto -->
+        <div class="ayuda-image-container">
+            <img src="../static/img/ayudaPic.webp" alt="Perro siendo cuidado" class="ayuda-img">
+        </div>
+    </div>
+</section>
+
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+    <h2>Nuestras redes</h2>
+    <p>Síguenos y descubre nuestro contenido de interés:</p>
+    <div class="redes-sociales">
+        <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <img src="../static/img/icoIG.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+            <img src="../static/img/icoFB.png" alt="Facebook">
+        </a>
+
+    </div>
+
+    <div class="redes-container">
+        <!-- Atención 24 horas -->
+        <div class="redes-section">
+            <h3>ATENCIÓN 24 HORAS</h3>
+            <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+            <p>
+
+            </p>
+            <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+        </div>
+
+        <!-- Servicios -->
+        <div class="redes-section">
+            <h3>SERVICIOS</h3>
+            <ul>
+                <li><a href="#">Ayudas Diagnósticas</a></li>
+                <li><a href="#">Hospitalización</a></li>
+                <li><a href="#">Urgencias 24 Horas</a></li>
+                <li><a href="#">Cirugía</a></li>
+                <li><a href="#">Medicina Preventiva</a></li>
+                <li><a href="#">Consulta</a></li>
+                <li><a href="#">Trámite de viaje</a></li>
+                <li><a href="#">Laboratorio Clínico</a></li>
+            </ul>
+        </div>
+
+        <!-- Información -->
+        <div class="redes-section">
+            <h3>INFORMACIÓN</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+                <li><a href="#">Blog/Noticias</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+    <p>&copy; Motas 2025 © Medellín, Colombia
+        Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../static/js/adopta.js"></script>
+</body>
+</html>

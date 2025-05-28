@@ -1,0 +1,103 @@
+/* Fondo en general */
+body, .content, .main-header, .main-sidebar, .content-wrapper {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white !important;
+}
+
+/* Fondo solo para contenido principal */
+#content, .content, .main-content {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.704),
+        rgba(255, 255, 255, 0.704)),
+        url(../img/FondoMotas.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Sidebar limpio */
+.sidebar {
+    background-image: none !important;
+    background-color: #f8d1e0 !important;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6, label, .breadcrumb {
+    color: #111111 !important;
+}
+
+/* Links */
+a {
+    color: #454545 !important;
+}
+
+/* Sidebar links */
+.main-sidebar .nav-sidebar > li > a {
+    color: #fff !important;
+}
+
+.main-sidebar .nav-sidebar > li.active > a {
+    background-color: #ff69b4 !important;
+    color: #fff !important;
+}
+
+
+.submit-row input[name="_save"] {
+    background-color: #ff69b4 !important;  /* Verde */
+    color: white !important;
+}
+
+.submit-row input[name="_addanother"] {
+    background-color: #ff69b4 !important;  /* Azul */
+    color: white !important;
+}
+
+.submit-row input[name="_continue"] {
+    background-color: #ff69b4 !important;  /* Amarillo */
+    color: black !important;
+}
+
+.deletelink-box .deletelink {
+    background-color: #ff69b4 !important;  /* Rojo */
+    color: white !important;
+}
+/* Botón “Save” */
+input[name="_save"] {
+    background-color: #ff69b4 !important;
+    color: white !important;
+  }
+  
+  /* Botón “Save and continue editing” */
+  input[name="_continue"] {
+    background-color: #ff69bc !important;
+    color: white !important;
+  }
+  
+  /* Botón “Save and add another” */
+  input[name="_addanother"] {
+    background-color: #35dcc9 !important;
+    color: black !important;
+  }
+  /* Estilo para el enlace Delete */
+div.deletelink-box a.deletelink {
+    background-color: #ff69b4 !important;  /* Rosa chicle */
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    margin-top: 10px !important;
+  }
+  
+  /* Hover para Delete */
+  div.deletelink-box a.deletelink:hover {
+    background-color: #e75480 !important;  /* Rosa más intenso */
+    color: white !important;
+  }
+  

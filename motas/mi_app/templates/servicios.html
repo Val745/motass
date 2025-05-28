@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros - Motas</title>
+  <link rel="stylesheet" href="../static/CSS/servicios.css">
+</head>
+<body>
+
+<div id="urgencias">
+  <p>Línea de urgencias 24/7</p>
+</div>
+
+<!--************************* Cabecera ******************************-->
+
+<div id="urgencias">
+  <p>Línea de urgencias 24/7</p>
+</div>
+
+<header id="Header">
+  <img src="../static/img/LogoMotas.png" class="logo">
+
+  <input type="checkbox" id="menu">
+  <label for="menu">
+      <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+  </label>
+
+  <ul class="menu">
+      <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+      <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+      <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+      <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+      <li class="item" id="contactanos-btn">Contáctanos</li>
+      {% if user.is_authenticated %}
+          <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+      {% else %}
+          <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+          <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+      {% endif %}
+  </ul>
+
+</header>
+
+<!--***************************** modal login **********************************-->
+<div id="loginModal" class="modal-login">
+  <div class="modal-logincontent">
+    <span class="close">&times;</span>
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm" action="login.php" method="POST">
+      <label for="email"><strong>Email:</strong></label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password"><strong>Contraseña:</strong></label>
+      <input type="password" id="password" name="password" required>
+      <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
+      <br>
+
+      <button class="iniciar">Iniciar Sesión</button>
+      <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
+      <button class="option" id="openRegisterModal">Regístrate</button>
+
+    </form>
+  </div>
+</div>
+
+
+<!--***************************** modal login **********************************-->
+<div id="registerModal" class="modal-register">
+  <div class="modal-registercontent">
+    <span class="close">&times;</span>
+    <h2>Registrarse</h2>
+    <form id="registerForm" action="register.php" method="POST">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" name="telefono">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion">
+
+      </select>
+
+      <button class="sign">Registrarse</button>
+    </form>
+  </div>
+</div>
+<!--************************* titulo ******************************-->
+<section class="servicios-pagina">
+  <h1 class="titulo">NUESTROS SERVICIOS</h1>
+  <hr>
+
+  <!--************************* texto ******************************-->
+  <section class="serviciosinfo-container">
+    <div class="texto-serviciosinfo">
+      <h2>Motas: Centro medico canino y felino</h2>
+      <p>En Motas, entendemos que las mascotas son parte fundamental de tu familia, por eso, el bienestar de tu peludito es nuestra máxima prioridad. Nuestra clínica veterinaria en Medellín, es un lugar seguro y confiable, dónde tu compañero recibirá el mejor cuidado, trato y atención.</p>
+      <p>Contamos con un equipo de expertos apasionados por los animales; ellos se encargan de proporcionar atención excepcional a tu mascota, ofreciendo una amplia gama de servicios de calidad, según las necesidades.</p>
+      <br>
+      <a href="https://wa.me/573113020495" target="_blank" class="btn-escribenos" >¡HABLEMOS!</a>
+    </div>
+    <div class="imagen-serviciosinfo">
+      <img src="../static/img/serviciosPic.png" alt="Perro para adopción">
+    </div>
+  </section>
+
+  <!--************************* servicios ******************************-->
+  <section class="servicios-container">
+    <div class="servicios-contenido">
+      <div class="texto">
+        <h2>OFRECEMOS:</h2>
+        <p>En nuestra clínica veterinaria en Medellín, ofrecemos excelentes servicios veterinarios para garantizar la salud y el bienestar de tu mascota. En Motas podrás encontrar: </p>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Ayudas Diagnósticas</h3>
+            <p class="contenido oculto">Contamos con equipos de última generación para diagnósticos precisos, incluyendo radiografías y análisis de laboratorio.</p>
+            <a href="ayudas.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Hospitalización de Mascotas</h3>
+            <p class="contenido oculto">Brindamos cuidados intensivos y hospitalización si tu mascota requiere de una atención continua.</p>
+            <a href="servicios/hospitalizacion.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Urgencias Veterinarias 24 Horas</h3>
+            <p class="contenido oculto">Estamos disponibles en cualquier momento para atender emergencias. Tù tranquilidad y la salud de tu mascota son nuestra prioridad.</p>
+            <a href="servicios/urgencias.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Cirugía Veterinaria</h3>
+            <p class="contenido oculto">Realizamos cirugías con tecnología y técnicas avanzadas. Nuestra prioridad es el bienestar y la seguridad de tu mascota en cualquier procedimiento, ya sea una esterilización o una cirugía compleja.</p>
+            <a href="servicios/cirugia.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Medicina Preventiva Veterinaria</h3>
+            <p class="contenido oculto">Promovemos y nos encargamos de la salud a largo plazo de tu mascota a través de vacunas, desparasitación, nutrición adecuada y más.</p>
+            <a href="servicios/medicina.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Consulta Veterinaria</h3>
+            <p class="contenido oculto">Nuestros veterinarios altamente capacitados realizan evaluaciones exhaustivas para diagnosticar y tratar a tu mascota. Estamos listos para atender y solucionar todas tus preguntas.                        </p>
+            <a href="servicios/consulta.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Trámites de Viaje</h3>
+            <p class="contenido oculto">Si planeas viajar con tu mascota, nosotros te proporcionamos la información y los documentos necesarios.</p>
+            <a href="servicios/tramites.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+        <div class="servicios">
+          <div class="servicio">
+            <h3>Laboratorio Clínico</h3>
+            <p class="contenido oculto">Contamos con un laboratorio bien equipado para análisis diferentes tipos de examenes, con el objetivo de lograr un diagnóstico preciso y rápido.</p>
+            <a href="servicios/laboratorio.html" class="ver-mas oculto">Ver más...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--************************* texto ******************************-->
+  <section class="servicios3-container">
+    <div class="imagen-servicios3">
+      <img src="../static/img/serviciosPic3.png" alt="Perro para adopción">
+    </div>
+    <div class="texto-servicios3">
+      <h2>Nuestro equipo de profesionales</h2>
+      <p>Estamos 100% comprometidos con proporcionar a las mascotas de Medellín el más alto nivel de atención. Te garantizamos el trato de tu mascota con el mismo amor y cuidado que lo harías en casa.</p>
+      <p>Nuestra misión es mantener a las mascotas felices y saludables a lo largo de sus vidas.</p>
+    </div>
+  </section>
+
+
+  <section class="serviciosinfo-container">
+    <div class="texto-serviciosinfo">
+      <h2>Nuestro compromiso</h2>
+      <p>Creemos en la importancia de contar con un equipo altamente calificado y amante de los animales. Nuestros auxiliares y veterinarios en Medellín, tienen una profunda pasión por el cuidado de las mascotas y están comprometidos con mantenerse actualizados en las últimas técnicas y avances en medicina veterinaria.</p>
+      <p><strong>Puedes confiar en que tu mascota está en buenas manos con nosotros.</strong></p>
+    </div>
+    <div class="imagen-serviciosinfo">
+      <img src="../static/img/serviciosPic2.png" alt="Perro para adopción">
+    </div>
+  </section>
+  <!--************************* Contador ******************************-->
+  <section class="contador">
+    <div class="item-contador">
+      <span class="number" data-target="+300">0</span>
+      <p>Mascotas atendidas</p>
+    </div>
+    <div class="item-contador">
+      <span class="number" data-target="  +8  ">0</span>
+      <p>Años de Experiencia</p>
+    </div>
+    <div class="item-contador">
+      <span class="number" data-target="+120">0</span>
+      <p>Cirugías realizadas</p>
+    </div>
+    <div class="item-contador">
+      <span class="number" data-target=" +15">0</span>
+      <p>Servicios especializados</p>
+    </div>
+  </section>
+</section>
+
+<!--************************* Botton WhatsApp ******************************-->
+<a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
+  <div class="arrow"></div>
+  <div class="whatsapp-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span class="whatsapp-label">Escríbenos</span>
+  </div>
+</a>
+<!--************************* Modal de Contacto ******************************-->
+<div id="modal-contacto" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option">Asesoría Médica</button>
+    <button class="option">Llámanos ahora</button>
+    <button class="option">Agenda tu cita</button>
+  </div>
+</div>
+
+
+
+<!--************************* redes ******************************-->
+<section class="nuestras-redes">
+  <h2>Nuestras redes</h2>
+  <p>Síguenos y descubre nuestro contenido de interés:</p>
+  <div class="redes-sociales">
+    <a href="https://www.instagram.com/centromedicomotas/?utm_source=ig_web_button_share_sheet" target="_blank">
+      <img src="../static/img/icoIG.png" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/peluqueriacaninayfelinamotas/about?locale=es_LA" target="_blank">
+      <img src="../static/img/icoFB.png" alt="Facebook">
+    </a>
+
+  </div>
+
+  <div class="redes-container">
+    <!-- Atención 24 horas -->
+    <div class="redes-section">
+      <h3>ATENCIÓN 24 HORAS</h3>
+      <p><a href="tel:+573112919194">📞 Línea de atención: (+57) 311 302 0495</a></p>
+      <p>
+
+      </p>
+      <p><a href="mailto:servicioalcliente@puntovet.com.co">📧 servicioalcliente@puntovet.com.co</a></p>
+    </div>
+
+    <!-- Servicios -->
+    <div class="redes-section">
+      <h3>SERVICIOS</h3>
+      <ul>
+        <li><a href="#">Ayudas Diagnósticas</a></li>
+        <li><a href="#">Hospitalización</a></li>
+        <li><a href="#">Urgencias 24 Horas</a></li>
+        <li><a href="#">Cirugía</a></li>
+        <li><a href="#">Medicina Preventiva</a></li>
+        <li><a href="#">Consulta</a></li>
+        <li><a href="#">Trámite de viaje</a></li>
+        <li><a href="#">Laboratorio Clínico</a></li>
+      </ul>
+    </div>
+
+    <!-- Información -->
+    <div class="redes-section">
+      <h3>INFORMACIÓN</h3>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Contáctanos</a></li>
+        <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
+        <li><a href="#">Blog/Noticias</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!--************************* Footer ******************************-->
+<footer class="footer" id="footer">
+  <p>&copy; Motas 2025 © Medellín, Colombia
+    Diseño y desarrollo por M. X. V. © 2025</p>
+</footer>
+
+<script src="../static/js/servicios.js"></script>
+</body>
+</html>

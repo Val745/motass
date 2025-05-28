@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/CSS/signup.css?v=2">
+
+    <title>Registro - Motas</title>
+</head>
+<body>
+    <!--************************* Cabecera ******************************-->
+    <div id="urgencias">
+        <p>Línea de urgencias 24/7</p>
+    </div>
+
+    <header id="Header">
+        <img src="{% static 'img/LogoMotas.png' %}" class="logo" alt="Logo Motas">
+
+        <input type="checkbox" id="menu">
+        <label for="menu">
+            <img src="{% static 'img/menu.png' %}" class="menu-ico" alt="Menú">
+        </label>
+
+        <ul class="menu">
+            <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
+            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
+            <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
+            <li class="item" id="contactanos-btn">Contáctanos</li>
+            {% if user.is_authenticated %}
+                <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            {% else %}
+                <li class="item"><a href="{% url 'signin' %}">Inicia Sesión</a></li>
+                <li class="item"><a href="{% url 'signup' %}" class="active">Registro</a></li>
+            {% endif %}
+        </ul>
+    </header>
+
+    <!--************************* Modal de Contacto ******************************-->
+    <div id="modal-contacto" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Contáctanos</h4>
+            <button class="emergency">Llama a la línea de emergencia</button>
+            <button class="option">Asesoría Médica</button>
+            <button class="option">Llámanos ahora</button>
+            <button class="option">Agenda tu cita</button>
+        </div>
+    </div>
+
+    <!--************************* Formulario de Registro ******************************-->
+    <div class="container">
+        <div class="image-section">
+            <img src="{% static 'img/signup.png' %}" alt="Ilustración de registro">
+        </div>
+        
+        <div class="form-section">            
+            {% if form.errors %}
+                <div class="error-message">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <form action="{% url 'signup' %}" method="POST" novalidate>
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <h4 for="{{ form.first_name.id_for_label }}">Nombre</h4>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <span class="field-error">{{ form.first_name.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <h4 for="{{ form.last_name.id_for_label }}">Apellido</h4>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <span class="field-error">{{ form.last_name.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <h4 for="{{ form.username.id_for_label }}">Correo Electrónico</h4>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <span class="field-error">{{ form.username.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <h4 for="{{ form.password1.id_for_label }}">Contraseña</h4>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <span class="field-error">{{ form.password1.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <h4 for="{{ form.password2.id_for_label }}">Confirmar Contraseña</h4>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <span class="field-error">{{ form.password2.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                
+                <button class="signup-btn">Registrarse</button>
+                
+                <div class="login-redirect">
+                    ¿Ya tienes una cuenta? <a href="{% url 'signin' %}">Inicia Sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Manejo del modal de contacto
+        const modal = document.getElementById('modal-contacto');
+        const btn = document.getElementById('contactanos-btn');
+        const span = document.getElementsByClassName('close')[0];
+        
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+        
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
