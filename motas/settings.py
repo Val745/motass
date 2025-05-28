@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # False en Render (seguro)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,10 +19,11 @@ SECRET_KEY = 'django-insecure-8l5^x(e07*z##5z5=ctj)68td$1c0lo2b*vw6^vij#9lo-qu1l
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'motas.onrender.com',
-    'localhost',  # Optional: For local development
-    '127.0.0.1', # Optional: For local development
+        'motas.onrender.com',
+        'localhost',  # Optional: For local development
+        '127.0.0.1', # Optional: For local development
 ]
+
 
 # Application definition
 
@@ -131,7 +133,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'mi_app.middleware.AutoRedirectResetDone',
-
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'motas.urls'
@@ -202,13 +205,17 @@ USE_TZ = True  # Usar zona horaria
 STATIC_URL = '/static/'
 
 # Al final del archivo o cerca de STATIC_URL
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ¡Solo esta línea!
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'mi_app/static'),  # Ruta a tus archivos estáticos
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'no-reply@motas.com'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
