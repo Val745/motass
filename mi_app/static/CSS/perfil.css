@@ -395,3 +395,22 @@ button {
   .Agregar-mascota:hover {
     background: #3cdabd;
   }
+
+.Panel {
+    width: 30%;
+    padding: 10px;
+    background: #ff58e6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 1.4em;
+  }
+  
+  .Panel:hover {
+    background: #fa52e1;
+  }

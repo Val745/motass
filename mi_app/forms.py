@@ -3,7 +3,7 @@ from django.forms import ModelForm, ValidationError, inlineformset_factory
 from .models import Mascota, HistorialMedico
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser  # Usa tu modelo personalizado
-
+from .models import Cita, Mascota
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -132,3 +132,29 @@ HistorialFormSet = inlineformset_factory(
     extra=1,
     can_delete=False
 )
+
+from django import forms
+from .models import Cita, Mascota
+
+SERVICIOS = [
+    ('Consulta Veterinaria', 'Consulta Veterinaria'),
+    ('Baño y peluquería', 'Baño y peluquería'),
+    ('Vacunación', 'Vacunación'),
+    ('Telemedicina', 'Telemedicina (Consulta virtual)'),
+    ('Trámites de viaje', 'Trámites de viaje'),
+    ('Otro servicio', 'Otro servicio'),
+]
+
+class CitaForm(forms.ModelForm):
+    motivo = forms.ChoiceField(choices=SERVICIOS, label="Servicio")
+    dia = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    hora = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
+
+    class Meta:
+        model = Cita
+        fields = ['mascota', 'motivo', 'dia', 'hora']
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.fields['mascota'].queryset = Mascota.objects.filter(user=user)

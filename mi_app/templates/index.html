@@ -81,14 +81,13 @@
 </section>
 
 <!--************************* Sección de Agenda tu Consulta ******************************-->
-
 <section class="consulta-container">
     <div class="consulta-info">
         <h2 class="consulta-titulo">Agenda tu consulta</h2>
         <p class="consulta-descripcion">Medicina para perros y gatos con atención médica 24 horas, los 7 días de la semana.</p>
         
         {% if user.is_authenticated %}
-            <form action="{% url 'citas' %}" method="get" style="display: inline;">
+            <form action="{% url 'agendar_cita' %}" method="get" style="display: inline;">
                 <button type="submit" class="boton-consulta" id="ir-a-citas">AGENDATE</button>
             </form>
         {% else %}
@@ -97,20 +96,17 @@
         {% endif %}
     </div>
     <div class="consulta-imagen">
-        <img src="../static/img/cita.png" alt="Veterinaria con perro">
+        <img src="{% static 'img/cita.png' %}" alt="Veterinaria con perro">
     </div>
 </section>
 
 <!-- Modal (solo para no logueados) -->
 {% if not user.is_authenticated %}
-<!-- Modal -->
 <div id="consulta-modal" class="modal">
     <div class="modal-content">
       <h2>Inicia sesión para agendar la cita</h2>
       <a href="{% url 'signin' %}" class="modal-button">Iniciar Sesión</a>
     </div>
-  </div>
-  
 </div>
 {% endif %}
 <!--************************* tienda ******************************-->

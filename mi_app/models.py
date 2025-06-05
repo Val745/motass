@@ -5,11 +5,6 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 
 class CustomUser(AbstractUser):
-    # Estos campos ya vienen en AbstractUser, así que no es necesario redefinirlos:
-    # username, email, first_name, last_name, password, etc.
-
-    # Puedes agregar más campos personalizados si quieres. Ejemplo:
-    # telefono = models.CharField(max_length=15, blank=True, null=True)
     pass
 
     def __str__(self):
@@ -78,3 +73,15 @@ class HistorialMedico(models.Model):
 
     def __str__(self):
         return f"Historial de {self.mascota.nombre} (Dueñ@: {self.mascota.user.username})"
+    
+class Cita(models.Model):
+    mascota = models.ForeignKey('Mascota', on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    dia = models.DateField()
+    hora = models.TimeField()
+    motivo = models.CharField(max_length=255)
+    veterinario = models.CharField(max_length=100, blank=True, null=True)  # editable por admin
+    costo_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)  # editable por admin
+
+    def __str__(self):
+        return f"Cita para {self.mascota} el {self.dia} a las {self.hora}"

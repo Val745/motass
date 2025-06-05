@@ -85,7 +85,11 @@
     </button> 
 </form>
 {% if user.is_staff %}
-    <a href="/admin/" class="btn btn-warning mt-2">Panel administrativo</a>
+<form action="{% url 'admin' %}" method="get" style="display: inline;">
+    <button class="Agregar-mascota">
+        PANEL ADMINISTRATIVO
+    </button> 
+</form>
 {% endif %}
 
 </body>

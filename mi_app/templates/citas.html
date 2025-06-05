@@ -6,7 +6,26 @@
   <title>Agendate - Motas</title>
   <link rel="stylesheet" href="../static/CSS/citas.css?v=1"></head>
 <body>
-    
+
+
+    <h2>Agendar cita</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_motivo">Servicio:</label>
+    {{ form.motivo }}
+    <br>
+    <label for="id_mascota">Mascota:</label>
+    {{ form.mascota }}
+    <br>
+    <label for="id_dia">Día:</label>
+    {{ form.dia }}
+    <br>
+    <label for="id_hora">Hora:</label>
+    {{ form.hora }}
+    <br>
+    <button type="submit">Agendar</button>
+</form>
+
 <section class="agendar-section">
     <div class="agendar-container">
         <div class="agendar-text-container">
@@ -110,5 +129,30 @@
 </section>
 
 <script src="../static/js/citas.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona todos los botones "AGENDAR" de los servicios
+    document.querySelectorAll('.agenda-button').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Obtiene el nombre del servicio desde el h3 anterior al botón
+            var servicio = btn.closest('.agendar-servicios').querySelector('h3').innerText.trim();
+            // Selecciona el campo motivo del formulario
+            var selectMotivo = document.getElementById('id_motivo');
+            if (selectMotivo) {
+                // Busca la opción que coincide y la selecciona
+                for (var i = 0; i < selectMotivo.options.length; i++) {
+                    if (selectMotivo.options[i].text.trim().toLowerCase() === servicio.toLowerCase()) {
+                        selectMotivo.selectedIndex = i;
+                        break;
+                    }
+                }
+                // Hace scroll al formulario
+                selectMotivo.scrollIntoView({behavior: "smooth", block: "center"});
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

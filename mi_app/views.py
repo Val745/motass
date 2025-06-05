@@ -10,7 +10,7 @@ from .forms import HistorialFormSet, MascotaForm
 import logging
 from .models import Mascota, HistorialMedico
 from .forms import MascotaForm, HistorialFormSet
-
+from .forms import CitaForm
 
 def index(request):
     return render(request, 'index.html')
@@ -168,3 +168,16 @@ def cuidado_perros(request):
 def vacunacion_gatos(request):
     return render(request, 'blog/vacunacion_gatos.html')
 
+def agendar_cita(request):
+    if not request.user.is_authenticated:
+        return redirect('signin')
+    if request.method == 'POST':
+        form = CitaForm(request.POST, user=request.user)
+        if form.is_valid():
+            cita = form.save(commit=False)
+            cita.usuario = request.user
+            cita.save()
+            return redirect('perfil')  # O donde quieras redirigir
+    else:
+        form = CitaForm(user=request.user)
+    return render(request, 'citas.html', {'form': form})
