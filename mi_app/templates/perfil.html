@@ -85,11 +85,9 @@
     </button> 
 </form>
 {% if user.is_staff %}
-<form action="{% url 'admin' %}" method="get" style="display: inline;">
-    <button class="Panel">
-        PANEL ADMINISTRATIVO
-    </button> 
-</form>
+<a href="{% url 'admin:index' %}" class="Panel">
+    PANEL ADMINISTRATIVO
+</a>
 {% endif %}
 
 </body>
