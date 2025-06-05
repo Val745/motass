@@ -1,11 +1,11 @@
 
 from pathlib import Path
 import os
-DEBUG = os.getenv('DEBUG', 'False') == 'True'  # False en Render (seguro)
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent  # Corrige aquí
+DEBUG = False 
+
 APPEND_SLASH = True
 
 
@@ -162,8 +162,12 @@ WSGI_APPLICATION = 'motas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'motasdb',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',  # <-- Cambia aquí
+        'PORT': '5432',
     }
 }
 
@@ -204,16 +208,12 @@ USE_TZ = True  # Usar zona horaria
 
 # Configuración básica (ya la tienes)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mi_app/static'),  # Ruta a tus archivos estáticos originales
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Ruta para collectstatic
-
-# Añade esto SI estás en producción (Render)
-if not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Usa Path aquí también
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'no-reply@motas.com'
+
+
 
 
