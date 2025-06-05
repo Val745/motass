@@ -78,16 +78,17 @@
         </li>
     {% endfor %}
 </ul>
-
-
-
           
 <form action="{% url 'crear_mascota' %}" method="get" style="display: inline;">
     <button class="Agregar-mascota">
         AGREGA UNA MASCOTA
     </button> 
 </form>
-
+{% if user.is_superuser %}
+    <a href="{% url 'admin' %}" class="btn btn-warning mt-2">Panel Administrativo</a>
+{% elif user.groups.filter(name="veterinario").exists %}
+    <a href="{% url 'admin' %}" class="btn btn-info mt-2">Panel Veterinario</a>
+{% endif %}
 
 </body>
 </html>
