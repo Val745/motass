@@ -12,6 +12,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 APPEND_SLASH = True
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pon-una-clave-segura-aqui')
 
