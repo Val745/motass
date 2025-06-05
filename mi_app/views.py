@@ -5,9 +5,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import HistorialMedico, Mascota
 from .forms import CustomUserCreationForm
-from django.shortcuts import render, redirect                                                   
 from django.contrib.auth.decorators import login_required
 from .forms import HistorialFormSet, MascotaForm
+import logging
+from .models import Mascota, HistorialMedico
+from .forms import MascotaForm, HistorialFormSet
 
 
 def index(request):
@@ -15,19 +17,22 @@ def index(request):
 
 
 def signup(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            django_messages.success(request, '¡Registro exitoso!')
-            return redirect('perfil')
-        # Si el formulario no es válido, los errores estarán en form.errors
-    else:
-        form = CustomUserCreationForm()
-    
-    return render(request, 'signup.html', {'form': form})  # Elimina la variable 'error'
-
+    try:
+        if request.method == 'POST':
+            form = CustomUserCreationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                django_messages.success(request, '¡Registro exitoso!')
+                return redirect('perfil')
+            # Si el formulario no es válido, los errores estarán en form.errors
+        else:
+            form = CustomUserCreationForm()
+        
+        return render(request, 'signup.html', {'form': form})  # Elimina la variable 'error'
+    except Exception as e:
+        logging.exception("Error en el registro de usuario")
+        raise
 def perfil(request):
     mascotas = Mascota.objects.filter(user=request.user)
     return render(request, 'perfil.html', {'mascotas' : mascotas})
@@ -81,10 +86,6 @@ def crear_mascota(request):
 
 def nosotros(request):
     return render(request, 'nosotros.html')
-
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Mascota, HistorialMedico
-from .forms import MascotaForm, HistorialFormSet
 
 def mascota_detail(request, mascota_id):
     mascota = get_object_or_404(Mascota, id=mascota_id)
