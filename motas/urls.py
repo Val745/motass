@@ -3,6 +3,7 @@ from django.urls import path
 from mi_app.views import index, header, mascota_detail, signin, perfil, crear_mascota, cerrarsesion, nosotros, servicios, adopta, ayudas, cirugia, consulta, hospitalizacion, laboratorio, medicina, tramites, urgencias, signup, citas, salud_felina, enfermedades_perros, vacunacion_gatos, cuidado_perros  # Importamos las vistas
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
+from . import views
 
 
 urlpatterns = [
@@ -37,6 +38,7 @@ urlpatterns = [
     path('blog/enfermedades_perros/', enfermedades_perros, name='enfermedades_perros'),
     path('blog/vacunacion_gatos/', vacunacion_gatos, name='vacunacion_gatos'),
     path('blog/cuidado_perros/', cuidado_perros, name='cuidado_perros'),
+    path('agendar_cita/', views.agendar_cita, name='agendar_cita'),
 
 ]
 

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from mi_app.views import index, header, perfil, logout, nosotros, servicios, adopta, ayudas, cirugia, consulta, hospitalizacion, laboratorio, medicina, tramites, urgencias, signup, citas  # Importamos las vistas
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,6 +23,7 @@ urlpatterns = [
     path('header/', header, name='header'),
     path('logout/', logout, name='logout'),
     path('perfil/', perfil, name='perfil'),
+    path('agendar_cita/', views.agendar_cita, name='agendar_cita'),
 
 
 ]

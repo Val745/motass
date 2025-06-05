@@ -35,7 +35,10 @@ def signup(request):
         raise
 def perfil(request):
     mascotas = Mascota.objects.filter(user=request.user)
-    return render(request, 'perfil.html', {'mascotas' : mascotas})
+    return render(request, 'perfil.html', {
+        'user': request.user,
+        'mascotas': mascotas
+    })
 
 
 def cerrarsesion(request):
