@@ -1,2 +1,1 @@
-web: python manage.py migrate && gunicorn motas.wsgi
-
+web: python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn motas.wsgi
