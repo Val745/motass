@@ -1,1 +1,1 @@
-web: gunicorn motas.wsgi
+web: python manage.py migrate && gunicorn motas.wsgi
