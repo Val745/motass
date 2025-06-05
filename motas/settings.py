@@ -1,10 +1,12 @@
 
 from pathlib import Path
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent  # Corrige aquí
-DEBUG = False 
+BASE_DIR = Path(__file__).resolve().parent.parentDEBUG = False 
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 APPEND_SLASH = True
 
@@ -13,15 +15,12 @@ APPEND_SLASH = True
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8l5^x(e07*z##5z5=ctj)68td$1c0lo2b*vw6^vij#9lo-qu1l'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pon-una-clave-segura-aqui')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = [
-        'motas.onrender.com',
-        'localhost',  # Optional: For local development
-        '127.0.0.1', # Optional: For local development
-]
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
+
 
 
 # Application definition
@@ -161,14 +160,9 @@ WSGI_APPLICATION = 'motas.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'motasdb',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 AUTH_USER_MODEL = 'mi_app.CustomUser'
