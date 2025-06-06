@@ -12,7 +12,6 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 APPEND_SLASH = True
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pon-una-clave-segura-aqui')
 
@@ -158,10 +157,16 @@ WSGI_APPLICATION = 'motas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+ #   'default': dj_database_url.config(
+  #      default=os.environ.get('DATABASE_URL')
+   # )
+#}
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_USER_MODEL = 'mi_app.CustomUser'
@@ -208,5 +213,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST_USER = 'no-reply@motas.com'
 
 
-
-
+SECRET_KEY = 'django-insecure-4!z@8^1#b2r3$w7q6p9e0s%u&x*lmz!a@d1f2g3h4j5k6l7m8n9o0p'
+DEBUG = True
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # si tienes una carpeta 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'

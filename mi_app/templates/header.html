@@ -1,28 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motas</title>
-    <link rel="stylesheet" href="../static/CSS/style.css">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
 <div id="urgencias">
     <p>Línea de urgencias 24/7</p>
 </div>
 
-<!--************************* Cabecera ******************************-->
 <header id="Header">
-    <img src="../static/img/LogoMotas.png" class="logo">
+    <img src="{% static 'img/LogoMotas.png' %}" class="logo">
 
     <input type="checkbox" id="menu">
     <label for="menu">
-        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+        <img src="{% static 'img/menu.png' %}" class="menu-ico" alt="Menú">
     </label>
 
     <ul class="menu">
-        <li class="item"><a href="index.html">Inicio</a></li>
+        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
         <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
         <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
         <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
@@ -34,9 +33,7 @@
             <li class="item"><a href="{% url 'signup' %}">Registrate</a></li>
         {% endif %}
     </ul>
-
 </header>
-
 <!--************************* Botón WhatsApp ******************************-->
 <a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
     <div class="arrow"></div>
@@ -48,14 +45,13 @@
 
 <!--************************* Modal de Contacto ******************************-->
 <div id="modal-contacto" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Contáctanos</h2>
-        <button class="emergency">Llama a la línea de emergencia</button>
-        <button class="option">Asesoría Médica</button>
-        <button class="option">Llámanos ahora</button>
-        <button class="option">Agenda tu cita</button>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
+    <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
+  </div>
 </div>
 </body>
 </html>

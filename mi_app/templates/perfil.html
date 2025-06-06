@@ -52,14 +52,13 @@
 
 <!--************************* Modal de Contacto ******************************-->
 <div id="modal-contacto" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Contáctanos</h2>
-        <button class="emergency">Llama a la línea de emergencia</button>
-        <button class="option">Asesoría Médica</button>
-        <button class="option">Llámanos ahora</button>
-        <button class="option">Agenda tu cita</button>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
+    <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
+  </div>
 </div>
 
 <h1 id="welcome">Bienvenid@ {{ user.first_name }}</h1>
@@ -83,12 +82,30 @@
     <button class="Agregar-mascota">
         AGREGA UNA MASCOTA
     </button> 
-</form>
+</form> 
 {% if user.is_staff %}
 <a href="{% url 'admin:index' %}" class="Panel">
     PANEL ADMINISTRATIVO
 </a>
 {% endif %}
+
+<script>
+document.getElementById('btn-whatsapp-modal').onclick = function() {
+    window.open('https://wa.me/573113020495', '_blank');
+};
+
+document.getElementById('btn-agenda-modal').onclick = function() {
+    // Cambia 'ir-a-citas' por el id real de tu botón de agendar si es diferente
+    var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
+    if (agendarBtn) {
+        agendarBtn.click();
+    } else {
+        // Si no hay botón, puedes redirigir a la página de citas
+        window.location.href = '/citas/';
+    }
+};
+</script>
+<script src="../static/js/script.js"></script>
 
 </body>
 </html>

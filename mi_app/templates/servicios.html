@@ -33,7 +33,7 @@
       <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
       <li class="item" id="contactanos-btn">Contáctanos</li>
       {% if user.is_authenticated %}
-          <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            <li class="item"><a href="{% url 'perfil' %}">Mi Perfil</a></li>
       {% else %}
           <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
           <li class="item"><a href="{% url 'signup' %}">registro</a></li>
@@ -302,7 +302,22 @@
   <p>&copy; Motas 2025 © Medellín, Colombia
     Diseño y desarrollo por M. X. V. © 2025</p>
 </footer>
+<script>
+document.getElementById('btn-whatsapp-modal').onclick = function() {
+    window.open('https://wa.me/573113020495', '_blank');
+};
 
+document.getElementById('btn-agenda-modal').onclick = function() {
+    // Cambia 'ir-a-citas' por el id real de tu botón de agendar si es diferente
+    var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
+    if (agendarBtn) {
+        agendarBtn.click();
+    } else {
+        // Si no hay botón, puedes redirigir a la página de citas
+        window.location.href = '/citas/';
+    }
+};
+</script>
 <script src="../static/js/servicios.js"></script>
 </body>
 </html>

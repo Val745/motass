@@ -11,15 +11,16 @@
 <div id="urgencias">
     <p>Línea de urgencias 24/7</p>
 </div>
-
-<!--************************* Cabecera ******************************-->
-
+<!--************************* Cabecera ************************* *****-->
+<div id="urgencias">
+    <p>Línea de urgencias 24/7</p>
+</div>
 <header id="Header">
-    <img src="../../static/img/LogoMotas.png" class="logo">
+    <img src="../static/img/LogoMotas.png" class="logo">
 
     <input type="checkbox" id="menu">
     <label for="menu">
-        <img src="img/menu.png" class="menu-ico" alt="Menú">
+        <img src="../static/img/menu.png" class="menu-ico" alt="Menú" />
     </label>
 
     <ul class="menu">
@@ -28,9 +29,15 @@
         <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
         <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
         <li class="item" id="contactanos-btn">Contáctanos</li>
-        <li class="btn" id="iniciar-sesion-btn">Inicia Sesión</li>
+        {% if user.is_authenticated %}
+            <li class="item"><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+        {% else %}
+            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
+            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
+        {% endif %}
     </ul>
 </header>
+
 
 <!--***************************** modal login **********************************-->
 <div id="loginModal" class="modal-login">
@@ -224,14 +231,13 @@
 </a>
 <!--************************* Modal de Contacto ******************************-->
 <div id="modal-contacto" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Contáctanos</h2>
-        <button class="emergency">Llama a la línea de emergencia</button>
-        <button class="option">Asesoría Médica</button>
-        <button class="option">Llámanos ahora</button>
-        <button class="option">Agenda tu cita</button>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
+    <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
+  </div>
 </div>
 
 
@@ -290,7 +296,22 @@
     <p>&copy; Motas 2025 © Medellín, Colombia</p>
     <p>Diseño y desarrollo por M. X. V. © 2025</p>
 </footer>
+<script>
+document.getElementById('btn-whatsapp-modal').onclick = function() {
+    window.open('https://wa.me/573113020495', '_blank');
+};
 
+document.getElementById('btn-agenda-modal').onclick = function() {
+    // Cambia 'ir-a-citas' por el id real de tu botón de agendar si es diferente
+    var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
+    if (agendarBtn) {
+        agendarBtn.click();
+    } else {
+        // Si no hay botón, puedes redirigir a la página de citas
+        window.location.href = '/citas/';
+    }
+};
+</script>
 <script src="../../static/js/servicios.js"></script>
 </body>
 </html>

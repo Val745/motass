@@ -33,6 +33,7 @@ body {
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    z-index: 2147483647; /* Máximo valor posible */
 }
 
 /* Flecha animada */
@@ -965,109 +966,182 @@ ul li a:hover, p a:hover {
 
 }
 
-/* Adaptación a pantallas pequeñas */
-@media (max-width: 768px) {
-    .contenedor {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .formulario, .ubicacion {
-        width: 100%;
-    }
-
-    .ubicacion img {
-        max-width: 100%;
-    }
-
-    .contenedor-ubi {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .formulario, .ubicacion {
-        width: 100%;
-    }
-
-    .ubicacion img {
-        max-width: 100%;
-    }
-
-    .veterinaria {
-        padding: 20px;
-        margin-top: 50vh;
-    }
-
-    .servicios {
-        grid-template-columns: repeat(2, 1fr); /* Se muestran solo 2 columnas */
-        gap: 15px;
-    }
-
-    .servicio {
-        padding: 15px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
+/* Modal base (oculto por defecto) */
+.modal {
+    display: none; /* Cámbialo a block con JS para mostrarlo */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Botón */
+  .modal-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #35c4b3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-button:hover {
+    background-color: #24A89D;
+  }
+  
+/* Tablet pequeña (600px) */
+@media (min-width: 600px) {
     .logo {
         height: 70px;
-        width: auto;
     }
-
-}
-
-
-/* Ajuste progresivo del tamaño de los ítems del menú */
-@media (max-width: 1300px) {
+    
     .item {
-        font-size: 16px; /* Reduce el tamaño */
-        margin: 0 10px; /* Reduce el espacio entre ítems */
+        font-size: 15px;
+        margin: 0 15px;
     }
+    
     .btn {
-        margin-left: 50px;
-        margin-right: 10px;
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1.1rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 1100px) {
+/* Tablet (768px) */
+@media (min-width: 768px) {
+    header {
+        padding: 0 7%;
+    }
+    
+    .logo {
+        height: 80px;
+    }
+    
     .item {
-        font-size: 16px; /* Reduce el tamaño */
-        margin: 0 10px; /* Reduce el espacio entre ítems */
+        font-size: 16px;
+        margin: 0 20px;
     }
+    
     .btn {
-        margin-left: 60px;
-        margin-right: 10px;
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    
+    section {
+        padding: 80px 7%;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    p {
+        font-size: 1.15rem;
+    }
+    
+    .flex-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
-@media (max-width: 1000px) {
+/* Laptop (992px) */
+@media (min-width: 992px) {
+    header {
+        padding: 0 10%;
+    }
+    
     .item {
-        font-size: 15px; /* Reduce el tamaño */
-        margin: 0 9px; /* Reduce el espacio entre ítems */
+        font-size: 17px;
+        margin: 0 25px;
     }
-    .btn {
-        margin-left: 50px;
-        margin-right: 30px;
+    
+    section {
+        padding: 100px 10%;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 990px) {
+/* Desktop grande (1200px) */
+@media (min-width: 1200px) {
+    .logo {
+        height: 90px;
+    }
+    
     .item {
-        font-size: 14px; /* Se sigue reduciendo el tamaño */
-        margin: 0 8px; /* Espaciado menor */
+        font-size: 18px;
     }
-    .btn {
-        margin-left: 50px;
-        margin-right: 20px;
+    
+    h2 {
+        font-size: 2.8rem;
+    }
+    
+    p {
+        font-size: 1.25rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 900px) {
-    .menu {
-        gap: 2px; /* Reduce la separación entre elementos */
+/* Pantallas muy grandes (1400px) */
+@media (min-width: 1400px) {
+    header {
+        padding: 0 12%;
+    }
+    
+    section {
+        padding: 120px 12%;
+    }
+    
+    h2 {
+        font-size: 3rem;
     }
 }
+
 
 /* --- Responsive Final (Modo menú hamburguesa) --- */
 @media (max-width: 850px) {
@@ -1095,5 +1169,104 @@ ul li a:hover, p a:hover {
     }
     #menu:checked ~ .menu {
         display: block;
+    }
+}
+
+
+/* --- MEDIA QUERIES ADICIONALES --- */
+@media (max-width: 768px) {
+    .contenedor-ubi {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario, .ubicacion {
+        width: 100%;
+    }
+
+    .ubicacion img {
+        max-width: 100%;
+    }
+
+    .veterinaria {
+        padding: 20px;
+        margin-top: 50vh;
+    }
+
+    .servicios {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .servicio {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    
+    .consulta-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .consulta-info {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .consulta-titulo {
+        font-size: 32px;
+    }
+    
+    .consulta-descripcion {
+        font-size: 18px;
+    }
+    
+    .consulta-imagen img {
+        width: 100%;
+    }
+    
+    .visitanos {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .visitanos__contenido {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .visitanos__contenido h2 {
+        font-size: 28px;
+    }
+    
+    .visitanos__contenido h1 span {
+        font-size: 48px;
+    }
+    
+    .visitanos__imagen {
+        max-width: 100%;
+    }
+    
+    .contador {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+    
+    .number {
+        font-size: 2.5rem;
+    }
+    
+    .btn-escribenos, #abrir-modal-cita, .boton-consulta {
+        padding: 12px 20px;
+        font-size: 16px;
     }
 }

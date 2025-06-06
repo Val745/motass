@@ -23,17 +23,8 @@
         </label>
 
         <ul class="menu">
-            <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
-            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
-            <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
-            <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
-            <li class="item" id="contactanos-btn">Contáctanos</li>
-            {% if user.is_authenticated %}
-                <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
-            {% else %}
-                <li class="item"><a href="{% url 'signin' %}">Inicia Sesión</a></li>
-                <li class="item"><a href="{% url 'signup' %}" class="active">Registro</a></li>
-            {% endif %}
+            <li class="item"><a href="{% url 'index' %}">Volver a inicio</a></li>
+
         </ul>
     </header>
 

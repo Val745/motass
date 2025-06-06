@@ -1140,3 +1140,33 @@ ul li a:hover, p a:hover {
         font-size: 3rem;
     }
 }
+
+
+/* --- Responsive Final (Modo menú hamburguesa) --- */
+@media (max-width: 850px) {
+    .menu {
+        padding: 30px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    label {
+        display: initial;
+    }
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(98, 105, 127);
+        display: none;
+    }
+    .item {
+        margin: 0 0 20px 0;
+    }
+    .btn {
+        width: 150px;
+    }
+    #menu:checked ~ .menu {
+        display: block;
+    }
+}

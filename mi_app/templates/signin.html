@@ -27,31 +27,20 @@
     </label>
 
     <ul class="menu">
-        <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
-        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
-        <li class="item"><a href="{% url 'servicios' %}">Servicios</a></li>
-        <li class="item"><a href="{% url 'adopta' %}">Adopta</a></li>
-        <li class="item" id="contactanos-btn">Contáctanos</li>
-        {% if user.is_authenticated %}
-            <li class="item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
-        {% else %}
-            <li class="item"><a href="{% url 'signin' %}">Inicia Sesion</a></li>
-            <li class="item"><a href="{% url 'signup' %}">registro</a></li>
-        {% endif %}
+        <li class="item"><a href="{% url 'index' %}">Volver a inicio</a></li>
     </ul>
 
 </header>
 
 <!--************************* Modal de Contacto ******************************-->
 <div id="modal-contacto" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Contáctanos</h2>
-        <button class="emergency">Llama a la línea de emergencia</button>
-        <button class="option">Asesoría Médica</button>
-        <button class="option">Llámanos ahora</button>
-        <button class="option">Agenda tu cita</button>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contáctanos</h2>
+    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
+    <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
+  </div>
 </div>
     {{error}}
     <div class="container-login">

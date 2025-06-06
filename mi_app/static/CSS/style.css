@@ -33,6 +33,7 @@ body {
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    z-index: 2147483647; /* Máximo valor posible */
 }
 
 /* Flecha animada */
@@ -183,6 +184,7 @@ label {
     width: 100%;
     height: auto; /* Altura automática según el contenido */
     overflow: hidden;
+    margin-top: 35px;
 }
 
 .carousel-container {
@@ -453,7 +455,12 @@ button {
     position: relative;
     padding: 40px;
     background-size: cover;
-    margin-top: 112vh;
+    margin-top: 60%;
+
+}
+
+.veterinaria h2{
+    margin-top: 900px;
 }
 
 h2 {
@@ -1034,6 +1041,9 @@ ul li a:hover, p a:hover {
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
     }
+        .veterinaria h2{
+        margin-top: 0;
+    }
 }
 
 /* Tablet (768px) */
@@ -1073,6 +1083,9 @@ ul li a:hover, p a:hover {
         justify-content: space-between;
         align-items: center;
     }
+        .veterinaria h2{
+        margin-top: 0;
+    }
 }
 
 /* Laptop (992px) */
@@ -1101,6 +1114,9 @@ ul li a:hover, p a:hover {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
     }
+        .veterinaria h2{
+        margin-top: 0;
+    }
 }
 
 /* Desktop grande (1200px) */
@@ -1120,14 +1136,19 @@ ul li a:hover, p a:hover {
     p {
         font-size: 1.25rem;
     }
-    
-    .grid-container {
-        grid-template-columns: repeat(4, 1fr);
+    .veterinaria h2{
+        margin-top: 0;
     }
 }
 
 /* Pantallas muy grandes (1400px) */
 @media (min-width: 1400px) {
+    .veterinaria h2{
+        margin-top: 900px;
+    }
+}
+
+@media (min-width: 1300px) {
     header {
         padding: 0 12%;
     }
@@ -1138,5 +1159,195 @@ ul li a:hover, p a:hover {
     
     h2 {
         font-size: 3rem;
+    }
+
+    .veterinaria {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+}
+
+
+/* --- Responsive Final (Modo menú hamburguesa) --- */
+@media (max-width: 850px) {
+    .menu {
+        padding: 30px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    label {
+        display: initial;
+    }
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgb(98, 105, 127);
+        display: none;
+    }
+    .item {
+        margin: 0 0 20px 0;
+    }
+    .btn {
+        width: 150px;
+    }
+    #menu:checked ~ .menu {
+        display: block;
+    }
+        .veterinaria h2{
+        margin-top: 0;
+    }
+}
+
+
+/* --- MEDIA QUERIES ADICIONALES --- */
+@media (max-width: 768px) {
+    .contenedor-ubi {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario, .ubicacion {
+        width: 100%;
+    }
+
+    .ubicacion img {
+        max-width: 100%;
+    }
+
+    .veterinaria {
+        padding: 20px;
+        margin-top: 50vh;
+    }
+
+    .servicios {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .servicio {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    
+    .consulta-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .consulta-info {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .consulta-titulo {
+        font-size: 32px;
+    }
+    
+    .consulta-descripcion {
+        font-size: 18px;
+    }
+    
+    .consulta-imagen img {
+        width: 100%;
+    }
+    
+    .visitanos {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .visitanos__contenido {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .visitanos__contenido h2 {
+        font-size: 28px;
+    }
+    
+    .visitanos__contenido h1 span {
+        font-size: 48px;
+    }
+    
+    .visitanos__imagen {
+        max-width: 100%;
+    }
+    
+    .contador {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .veterinaria {
+    position: relative;
+    padding: 40px;
+    background-size: cover;
+    margin-top: 58%;
+
+}
+    .veterinaria h2{
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+    
+    .number {
+        font-size: 2.5rem;
+    }
+    
+    .btn-escribenos, #abrir-modal-cita, .boton-consulta {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        height: 40px !important;
+        width: auto;
+    }
+    .menu-ico {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .item {
+        font-size: 13px !important;
+        margin: 0 5px !important;
+    }
+    .btn {
+        padding: 8px 14px !important;
+        font-size: 13px !important;
+        margin-left: 20px !important;
+    }
+}
+@media (max-width: 400px) {
+    .logo {
+        height: 35px !important;
+    }
+    .menu-ico {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        max-width: 35px !important;
+        max-height: 35px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: content-box !important;
+        display: inline-block !important;
+    }
+    label {
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }

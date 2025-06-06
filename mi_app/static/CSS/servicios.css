@@ -804,3 +804,180 @@ ul li a:hover, p a:hover {
         display: block;
     }
 }
+
+/* --- Secciones de Texto y Cuadros Responsivos --- */
+
+/* Contenedor principal responsivo */
+.serviciosinfo-container, 
+.servicios3-container,
+.servicios-contenido {
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+/* Texto responsivo */
+.texto-serviciosinfo, 
+.texto-servicios3,
+.servicios-container .texto {
+    max-width: 100%;
+    order: 1; /* Asegura que el texto aparezca primero en móvil */
+    margin-bottom: 30px;
+}
+
+.texto-serviciosinfo h2,
+.texto-servicios3 h2,
+.servicios-container h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.texto-serviciosinfo p,
+.texto-servicios3 p,
+.servicios-container p {
+    font-size: 16px;
+    text-align: justify;
+    padding: 10px;
+}
+
+/* Imágenes responsivas */
+.imagen-serviciosinfo, 
+.imagen-servicios3 {
+    width: 300px;
+    height: 300px;
+    order: 2; /* Asegura que la imagen aparezca después en móvil */
+    margin: 0 auto;
+}
+
+/* Botones responsivos */
+.btn-escribenos {
+    margin: 20px auto;
+    padding: 12px 25px;
+    font-size: 1rem;
+    display: block;
+    width: max-content;
+}
+
+/* Servicios responsivos */
+.servicios {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.servicio h3 {
+    font-size: 16px;
+}
+
+/* Contador responsivo */
+.contador {
+    flex-direction: column;
+    padding: 30px 0;
+    margin: 0 5%;
+}
+
+.number-container {
+    margin-bottom: 30px;
+}
+
+.number {
+    font-size: 2.5rem;
+}
+
+/* Redes sociales responsivas */
+.redes-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.redes-section {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Media Queries para ajustes específicos */
+
+/* Tabletas */
+@media (min-width: 768px) {
+    .serviciosinfo-container, 
+    .servicios3-container {
+        flex-direction: row;
+        padding: 30px;
+    }
+    
+    .texto-serviciosinfo, 
+    .texto-servicios3 {
+        max-width: 50%;
+    }
+    
+    .contador {
+        flex-direction: row;
+    }
+    
+    .redes-container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+/* Escritorios pequeños */
+@media (min-width: 992px) {
+    .serviciosinfo-container, 
+    .servicios3-container {
+        max-width: 900px;
+    }
+    
+    .texto-serviciosinfo h2,
+    .texto-servicios3 h2 {
+        font-size: 32px;
+    }
+    
+    .texto-serviciosinfo p,
+    .texto-servicios3 p {
+        font-size: 18px;
+    }
+    
+    .imagen-serviciosinfo, 
+    .imagen-servicios3 {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+/* Escritorios grandes */
+@media (min-width: 1200px) {
+    .serviciosinfo-container, 
+    .servicios3-container {
+        max-width: 1100px;
+    }
+    
+    .imagen-serviciosinfo, 
+    .imagen-servicios3 {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .number {
+        font-size: 3.5rem;
+    }
+}
+
+/* Ajustes especiales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .imagen-serviciosinfo, 
+    .imagen-servicios3 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .btn-escribenos {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .servicio h3 {
+        font-size: 15px;
+    }
+}

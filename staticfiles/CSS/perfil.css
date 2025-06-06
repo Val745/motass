@@ -384,6 +384,7 @@ button {
     color: white;
     border: none;
     border-radius: 30px;
+    font-size: 1em;
     cursor: pointer;
     transition: background 0.3s ease;
     margin: auto;
@@ -394,10 +395,10 @@ button {
   .Agregar-mascota:hover {
     background: #3cdabd;
   }
-  
+
 .Panel {
     width: 30%;
-    padding: 10px;
+    padding: 30px;
     background: #ff58e6;
     color: white;
     border: none;
@@ -407,6 +408,7 @@ button {
     margin: auto;
     font-weight: bolder;
     font-size: 1.4em;
+    text-decoration: none;
   }
   
   .Panel:hover {

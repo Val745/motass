@@ -428,12 +428,10 @@ button {
 
 /* Estilos para la sección "Por Qué Elegirnos" con Imagen */
 .por-que-elegirnos-contenido {
-    margin-top: 5%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    margin-right: 8%;
     gap: 15px;
 }
 
@@ -959,5 +957,260 @@ ul li a:hover, p a:hover {
     }
     #menu:checked ~ .menu {
         display: block;
+    }
+ 
+
+}
+/* ...existing code... */
+@media (max-width: 900px) {
+    .nosotros-hero {
+        margin-left: 5%;
+        width: 90%;
+        margin-top: 120px;
+        min-height: 180px;
+        border-radius: 4%;
+    }
+    .nosotros-hero h1 {
+        font-size: 26px;
+        margin-left: 4%;
+    }
+    .nosotros-hero p {
+        font-size: 15px;
+        margin-left: 4%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Contenedor principal que se achica completamente */
+.nosotros-hero {
+    margin: 10px auto;
+    margin-top: 30%;
+    width: 90%; /* Ocu1pa el 90% del ancho disponible */
+    height: 25%;
+    max-width: 400px; /* Ancho máximo para desktop */
+    aspect-ratio: 16/9; /* Relación de aspecto fija (ajusta según tu imagen) */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url(../img/cabNos.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Fondo semitransparente solo para el texto */
+.nosotros-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Oscurece ligeramente la imagen */
+    z-index: 0;
+}
+
+/* Contenedor de texto */
+.nosotros-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 15px;
+    width: 90%;
+}
+
+.nosotros-hero h1 {
+    font-size: clamp(18px, 4vw, 24px);
+    margin: 0 0 8px 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.nosotros-hero p {
+    font-size: clamp(13px, 3vw, 16px);
+    margin: 0;
+    color: white;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.motas {
+    color: #00fff2;
+    font-weight: bold;
+}
+    
+    /* Sección Nosotros */
+    .nosotros, .nosotros-contenido {
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        padding: 10px 0;
+    }
+    .nosotros h2 {
+        font-size: 20px;
+    }
+    .nosotros p {
+        font-size: 13px;
+        padding: 0 8px;
+    }
+
+    /* Equipo */
+    .nosotros-equipo {
+        margin-top: 30px;
+        padding: 0 0 10px 0;
+    }
+    .nosotros-equipo h3 {
+        font-size: 16px;
+    }
+    .equipo-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 0 10px 0;
+    }
+    .equipo-miembro {
+        max-width: 220px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    .equipo-miembro img {
+        width: 95px;
+        height: 95px;
+    }
+    .equipo-miembro h4 {
+        font-size: 15px;
+    }
+    .equipo-miembro p {
+        font-size: 12px;
+    }
+
+    /* Carrusel y reseñas */
+    .carousel-container {
+        max-width: 98vw;
+        margin-top: 10px;
+        padding: 0 4px;
+    }
+    .carousel img {
+        width: 120px;
+        margin: 0 5px;
+    }
+    .brand img {
+        width: 65px;
+        height: 65px;
+    }
+    .brand .motasre {
+        font-size: 13px;
+    }
+    .brand .stars {
+        font-size: 13px;
+    }
+    .container-reseñas h2 {
+        font-size: 16px;
+    }
+    .btn-reseñas {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+
+    /* Por qué elegirnos */
+    .por-que-elegirnos-contenido {
+        margin: 40px auto;         /* Centra y da margen arriba/abajo */
+        max-width: 1200px;
+        padding: 0 40px;           /* Espacio a los lados en pantallas grandes */
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-sizing: border-box; 
+    }
+    .por-que-elegirnos .imagen {
+        min-width: 0;
+        margin-top: 10px;
+    }
+    .por-que-elegirnos .imagen img {
+        max-width: 150px;
+    }
+    .por-que-elegirnos h2 {
+        font-size: 16px;
+    }
+    .por-que-elegirnos p,
+    .razon,
+    .razon p {
+        font-size: 12px;
+    }
+    .razon h3 {
+        font-size: 14px;
+    }
+
+    /* Redes */
+    .nuestras-redes {
+        padding: 15px 5px;
+        margin-top: 20px;
+    }
+    .nuestras-redes h2 {
+        font-size: 15px;
+    }
+    .nuestras-redes p {
+        font-size: 12px;
+    }
+    .redes-sociales img {
+        width: 18px;
+        height: 18px;
+    }
+    .redes-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 0 10px 0;
+    }
+    .redes-section {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+        font-size: 13px;
+        padding: 10px 0;
+    }
+    /* Ubicación */
+    .ubicacion {
+        padding: 10px 0;
+    }
+    .ubicacion img {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+    .info-sede {
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 1300px) {
+    .por-que-elegirnos-contenido {
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+
+    .por-que-elegirnos .imagen {
+        min-width: 0;
+        margin-top: 10px;
+    }
+}
+/* Versión móvil muy pequeña */
+@media (max-width: 480px) {
+    .nosotros-hero {
+        width: 85%;
+        aspect-ratio: 1/1; /* Cambia a cuadrado en móviles si prefieres */
+        margin-top: 40%;
+
+    }
+    .nosotros-hero-content {
+        padding: 10px;
     }
 }
