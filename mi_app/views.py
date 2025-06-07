@@ -11,6 +11,8 @@ import logging
 from .models import Mascota, HistorialMedico
 from .forms import MascotaForm, HistorialFormSet
 from .forms import CitaForm
+from django.core.mail import send_mail
+from django.conf import settings
 
 def index(request):
     return render(request, 'index.html')
@@ -184,3 +186,24 @@ def agendar_cita(request):
     else:
         form = CitaForm(user=request.user)
     return render(request, 'citas.html', {'form': form})
+
+
+def enviar_mensaje(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        telefono = request.POST.get('telefono')
+        email = request.POST.get('email')
+        asunto = request.POST.get('asunto', 'Sin asunto')
+        mensaje = request.POST.get('mensaje', '')
+
+        cuerpo = f"Nombre: {nombre}\nTeléfono: {telefono}\nEmail: {email}\nMensaje: {mensaje}"
+
+        send_mail(
+            asunto,
+            cuerpo,
+            settings.DEFAULT_FROM_EMAIL,
+            ['valerievidesdiaz@gmail.com'],
+            fail_silently=False,
+        )
+        return render(request, 'mensaje_enviado.html')
+    return redirect('index')

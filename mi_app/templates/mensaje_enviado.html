@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensaje enviado</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <div class="mensaje-exito" style="text-align:center; margin-top:50px;">
+        <h2>¡Gracias por contactarnos!</h2>
+        <p>Tu mensaje ha sido enviado correctamente.<br>
+        Nos pondremos en contacto contigo pronto.</p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Volver al inicio</a>
+    </div>
+</body>
+</html>

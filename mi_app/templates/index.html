@@ -248,7 +248,9 @@
     <div class="formulario">
         <h2>Escríbenos</h2>
         <p>Déjanos tus datos, nos pondremos en contacto contigo.</p>
-        <form action="enviar.php" method="post">
+        <!-- ...existing code... -->
+        <form action="{% url 'enviar_mensaje' %}" method="post">
+            {% csrf_token %}
             <input type="text" name="nombre" placeholder="Nombre*" required>
             <input type="tel" name="telefono" placeholder="Teléfono*" required>
             <input type="email" name="email" placeholder="Correo electrónico*" required>
@@ -260,6 +262,7 @@
             </label>
             <button type="submit">Enviar</button>
         </form>
+<!-- ...existing code... -->
     </div>
 
     <!--************************* Ubicación ******************************-->

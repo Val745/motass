@@ -157,17 +157,17 @@ WSGI_APPLICATION = 'motas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
-}
 #DATABASES = {
-    #'default': {
-   #     'ENGINE': 'django.db.backends.sqlite3',
-  #      'NAME': BASE_DIR / 'db.sqlite3',
- #   }
+ #   'default': dj_database_url.config(
+  #      default=os.environ.get('DATABASE_URL')
+   # )
 #}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 AUTH_USER_MODEL = 'mi_app.CustomUser'
 
@@ -209,12 +209,17 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Usa Path aquí también
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST_USER = 'no-reply@motas.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# ...existing code...
 
-
-    #SECRET_KEY = 'django-insecure-4!z@8^1#b2r3$w7q6p9e0s%u&x*lmz!a@d1f2g3h4j5k6l7m8n9o0p'
-   # DEBUG = True
-  #  STATIC_URL = '/static/'
- #   STATICFILES_DIRS = [BASE_DIR / 'static']  # si tienes una carpeta 'static'
-#    STATIC_ROOT = BASE_DIR / 'staticfiles'
+SECRET_KEY = 'django-insecure-4 !z@8^1#b2r3$w7q6p9e0s%u&x*lmz!a@d1f2g3h4j5k6l7m8n9o0p'
+DEBUG = True
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # si tienes una carpeta 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
