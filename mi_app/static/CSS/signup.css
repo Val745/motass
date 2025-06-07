@@ -23,7 +23,14 @@ body {
     background-size: cover;
     text-align: center;
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 #urgencias {
     background-color: #b40ea8; /* Color de fondo */
     color: #ffffff; /* Color del texto */
@@ -36,7 +43,14 @@ body {
     cursor: pointer;
     z-index: 1000; /* Asegura que esté por encima del header */
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 header {
     width: 100%;
     position: fixed;

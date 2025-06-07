@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +15,7 @@
 
 <!--************************* Cabecera ************************* *****-->
 <div id="urgencias">
-    <p>Línea de urgencias 24/7</p>
+    <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
 </div>
 <header id="Header">
     <img src="../static/img/LogoMotas.png" class="logo">
@@ -38,28 +39,6 @@
         {% endif %}
     </ul>
 </header>
-<!--***************************** modal login **********************************-->
-<div id="loginModal" class="modal-login">
-    <div class="modal-logincontent">
-        <span class="close">&times;</span>
-        <h2>Iniciar Sesión</h2>
-        <form id="loginForm" action="login.php" method="POST">
-            <label for="email"><strong>Email:</strong></label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password"><strong>Contraseña:</strong></label>
-            <input type="password" id="password" name="password" required>
-            <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
-            <br>
-
-            <button class="iniciar">Iniciar Sesión</button>
-            <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
-            <button class="option" id="openRegisterModal">Regístrate</button>
-
-        </form>
-    </div>
-</div>
-
 <!--************************* Botton WhatsApp ******************************-->
 
 <a href="https://wa.me/573113020495" class="whatsapp-container" target="_blank">
@@ -74,12 +53,11 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Contáctanos</h2>
-    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
     <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
     <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
   </div>
 </div>
-
 <!--***************************** Carrusel **********************************-->
 <div class="carousel-container">
     <div class="carousel">
@@ -104,35 +82,35 @@
     <h2>Veterinaria <span class="resaltado">24 Horas</span> en Medellín</h2>
     <div class="servicios">
         <a href="{% url 'ayudas' %}" class="servicio">
-            <img src="../static/img/icon1.png" alt="">
+            <img src="{% static 'img/icon1.png' %}" alt="">
             <p>Ayudas Diagnósticas</p>
         </a>
         <a href="{% url 'hospitalizacion' %}" class="servicio">
-            <img src="../static/img/icon2.png" alt="">
+            <img src="{% static 'img/icon2.png' %}" alt="">
             <p>Hospitalización</p>
         </a>
         <a href="{% url 'urgencias' %}" class="servicio">
-            <img src="../static/img/icon3.png" alt="">
+            <img src="{% static 'img/icon3.png' %}" alt="">
             <p>Urgencias 24 Horas</p>
         </a>
         <a href="{% url 'cirugia' %}" class="servicio">
-            <img src="../static/img/icon4.png" alt="">
+            <img src="{% static 'img/icon4.png' %}" alt="">
             <p>Cirugía Veterinaria</p>
         </a>
         <a href="{% url 'medicina' %}" class="servicio">
-            <img src="../static/img/icon5.png" alt="">
+            <img src="{% static 'img/icon5.png' %}" alt="">
             <p>Medicina Preventiva</p>
         </a>
         <a href="{% url 'consulta' %}" class="servicio">
-            <img src="../static/img/icon6.png" alt="">
+            <img src="{% static 'img/icon6.png' %}" alt="">
             <p>Consulta Veterinaria</p>
         </a>
         <a href="{% url 'tramites' %}" class="servicio">
-            <img src="../static/img/icon7.png" alt="">
+            <img src="{% static 'img/icon7.png' %}" alt="">
             <p>Trámite de Viaje</p>
         </a>
         <a href="{% url 'laboratorio' %}" class="servicio">
-            <img src="../static/img/icon8.png" alt="">
+            <img src="{% static 'img/icon8.png' %}" alt="">
             <p>Laboratorio Clínico</p>
         </a>
     </div>
@@ -303,24 +281,23 @@
         <div class="redes-section">
             <h3>SERVICIOS</h3>
             <ul>
-                <li><a href="#">Ayudas Diagnósticas</a></li>
-                <li><a href="#">Hospitalización</a></li>
-                <li><a href="#">Urgencias 24 Horas</a></li>
-                <li><a href="#">Cirugía</a></li>
-                <li><a href="#">Medicina Preventiva</a></li>
-                <li><a href="#">Consulta</a></li>
-                <li><a href="#">Trámite de viaje</a></li>
-                <li><a href="#">Laboratorio Clínico</a></li>
+                <li><a href="{% url 'ayudas' %}">Ayudas Diagnósticas</a></li>
+                <li><a href="{% url 'hospitalizacion' %}">Hospitalización</a></li>
+                <li><a href="{% url 'urgencias' %}">Urgencias 24 Horas</a></li>
+                <li><a href="{% url 'cirugia' %}">Cirugía</a></li>
+                <li><a href="{% url 'medicina' %}">Medicina Preventiva</a></li>
+                <li><a href="{% url 'consulta' %}">Consulta</a></li>
+                <li><a href="{% url 'tramites' %}">Trámite de viaje</a></li>
+                <li><a href="{% url 'laboratorio' %}">Laboratorio Clínico</a></li>
             </ul>
         </div>
         <!-- Información -->
         <div class="redes-section">
             <h3>INFORMACIÓN</h3>
             <ul>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="#">Contáctanos</a></li>
-                <li><a href="adopta.html">Adopta</a></li>
-                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="https://wa.me/573113020495" target="_blank">Contáctanos</a></li>
+                <li><a href="{% url 'adopta' %}">Adopta</a></li>
             </ul>
         </div>
     </div>
@@ -332,6 +309,10 @@
     <p>Diseño y desarrollo por M. X. V. © 2025</p>
 </footer>
 <script>
+document.getElementById('btn-llamar-emergencia').onclick = function() {
+    window.location.href = 'tel:3115406289';
+};
+
 document.getElementById('btn-whatsapp-modal').onclick = function() {
     window.open('https://wa.me/573113020495', '_blank');
 };

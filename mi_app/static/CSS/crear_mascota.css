@@ -8,7 +8,14 @@
     list-style: none;
     box-sizing: border-box;
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;

@@ -341,7 +341,14 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 .emergency {
     background-color: rgb(13, 173, 173);
     color: white;

@@ -5,7 +5,8 @@ import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 # ...existing code...
-
+LOGIN_REDIRECT_URL = '/perfil/'
+# ...existing code...
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
@@ -17,8 +18,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'pon-una-clave-segura-aqui')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
-
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 
 # Application definition

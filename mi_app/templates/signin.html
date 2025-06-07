@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,17 +6,16 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/CSS/signup.css">
+  <link rel="stylesheet" href="{% static 'CSS/signup.css' %}">
 
   <title>Registro - Motas</title>
 </head>
 <body>
 
-
 <!--************************* Cabecera ******************************-->
 
 <div id="urgencias">
-    <p>Línea de urgencias 24/7</p>
+    <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
 </div>
 
 <header id="Header">
@@ -37,12 +37,11 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Contáctanos</h2>
-    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
     <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
     <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
   </div>
-</div>
-    {{error}}
+</div>    {{error}}
     <div class="container-login">
         <div class="image-section">
           <img src="../static/img/login.png" alt="Illustration">
@@ -70,6 +69,21 @@
                     ¿No tienes cuenta? <a href="{% url 'signup' %}">Regístrate</a>
                 </p>
             </form>
+
+    <!-- ...existing code... -->
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <strong>{{ field.label }}:</strong> {{ error }}<br>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            {{ error }}<br>
+        {% endfor %}
+    </div>
+{% endif %}
+<!-- ...existing code... -->
        
 </body>
 </html>

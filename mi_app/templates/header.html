@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 <div id="urgencias">
-    <p>Línea de urgencias 24/7</p>
+    <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
 </div>
 
 <header id="Header">
@@ -48,10 +49,9 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Contáctanos</h2>
-    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
     <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
     <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
   </div>
-</div>
-</body>
+</div></body>
 </html>

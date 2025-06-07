@@ -212,3 +212,33 @@ body {
     border-radius: 5px;
   }
 
+/* Modal fondo */
+.modal-agendar {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal contenido */
+.modal-agendar-content {
+  background: #fff;
+  margin: auto;
+  padding: 30px 20px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 20px #0002;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 2em;
+  cursor: pointer;
+}

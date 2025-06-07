@@ -34,7 +34,14 @@ body {
     gap: 12px;
     cursor: pointer;
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 /* Flecha animada */
 .arrow {
     width: 15px;
@@ -961,6 +968,8 @@ ul li a:hover, p a:hover {
  
 
 }
+
+
 /* ...existing code... */
 @media (max-width: 900px) {
     .nosotros-hero {

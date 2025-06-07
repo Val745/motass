@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motas</title>
-    <link rel="stylesheet" href="../static/CSS/crear_mascota.css">
+    <link rel="stylesheet" href="{% static 'CSS/crear_mascota.css' %}">
 
 </head>
 
@@ -15,7 +16,7 @@
 <!--************************* Cabecera ******************************-->
 
 <div id="urgencias">
-    <p>Línea de urgencias 24/7</p>
+    <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
 </div>
 
 
@@ -49,12 +50,11 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Contáctanos</h2>
-    <button class="emergency">Llama a la línea de emergencia</button>
+    <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
     <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
     <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
   </div>
 </div>
-
     <h1>¡REGISTRA TU MASCOTA!</h1>
     {{error}}
     <form action="/crear_mascota/" method="POST">
@@ -80,6 +80,10 @@
     </form>
     
 <script>
+document.getElementById('btn-llamar-emergencia').onclick = function() {
+    window.location.href = 'tel:3115406289';
+};
+
 document.getElementById('btn-whatsapp-modal').onclick = function() {
     window.open('https://wa.me/573113020495', '_blank');
 };

@@ -49,24 +49,21 @@ def cerrarsesion(request):
 
 
 def signin(request):
-
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)  # Usa el formulario de autenticación
-        
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-            
             if user is not None:
                 login(request, user)
-                return redirect('perfil')
+                return redirect('/perfil/')
         # Si el formulario no es válido, se renderiza con errores
+        # Agrega esto para mostrar errores:
+        return render(request, 'signin.html', {'form': form})
     else:
-        form = AuthenticationForm()  # Formulario vacío para GET
-    
-    return render(request, 'signin.html', {'form': form})  # Pasa el formulario al contexto
-
+        form = AuthenticationForm()
+    return render(request, 'signin.html', {'form': form})
 
 def header(request):
     return render(request, 'header.html')
@@ -119,7 +116,10 @@ def mascota_detail(request, mascota_id):
 
 
 def citas(request):
-    return render(request, 'citas.html')
+    mascotas = Mascota.objects.filter(user=request.user) if request.user.is_authenticated else []
+    return render(request, 'citas.html', {
+        'mascotas': mascotas,
+    })
 
 def adopta(request):
     return render(request, 'adopta.html')

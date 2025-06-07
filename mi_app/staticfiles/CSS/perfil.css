@@ -311,3 +311,106 @@ button {
     font-size: 3.5em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/* Título principal */
+#titulo-mascotas {
+    font-size: 28px;
+    color: #3d7174;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #34dbc2;
+    padding-bottom: 10px;
+}
+
+.nombre-mascota:hover {
+    text-decoration: underline;
+}
+
+
+/* Lista de mascotas */
+.lista-mascotas {
+    list-style-type: none; /* Quita los puntitos */
+    padding: 0;
+    margin: 0;
+}
+
+/* Cada mascota individual */
+.item-mascota {
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover en cada mascota */
+.item-mascota:hover {
+    background-color: #dbf9f7;
+}
+
+/* Enlace de la mascota */
+.enlace-mascota {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Nombre de la mascota */
+.nombre-mascota {
+    margin: 0;
+    font-size: 20px;
+    color: #345e57;
+}
+
+/* Cuando no tiene ID */
+.nombre-mascota.sin-id {
+    color: #3ce7c2;
+    font-style: italic;
+}
+
+.item-mascota {
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin: 0 auto 10px auto; /* arriba: 0, lados: auto, abajo: 10px */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    width: 70%;
+}
+
+
+.Agregar-mascota {
+    width: 30%;
+    padding: 10px;
+    background: #3acfb4;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 1.4em;
+  }
+  
+  .Agregar-mascota:hover {
+    background: #3cdabd;
+  }
+
+.Panel {
+    width: 30%;
+    padding: 30px;
+    background: #ff58e6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 1.4em;
+    text-decoration: none;
+  }
+  
+  .Panel:hover {
+    background: #fa52e1;
+  }

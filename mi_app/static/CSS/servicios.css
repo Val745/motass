@@ -148,7 +148,14 @@ header {
     text-decoration: none; /* Elimina el subrayado */
 
 }
+  .urgencia{
+    text-decoration: none;
+    color: white;
+  }
 
+  .urgencia:hover {
+    text-decoration: underline;
+  }
 
 #menu {
     display: none;

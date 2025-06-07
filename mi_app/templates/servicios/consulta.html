@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>consulta - Motas</title>
-  <link rel="stylesheet" href="../../static/CSS/servicios.css">
+  <link rel="stylesheet" href="{% static '/CSS/servicios.css' %}">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
 
 <!--************************* Cabecera ************************* *****-->
 <div id="urgencias">
-    <p>Línea de urgencias 24/7</p>
+    <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
 </div>
 <header id="Header">
     <img src="../../static/img/LogoMotas.png" class="logo" alt="Logo for Centro Médico Canino y Felino Motas featuring a happy cartoon dog and cat in a green bathtub filled with bubbles and a yellow rubber duck, surrounded by a pink circular border. The text around the logo reads Centro Médico Canino y Felino Motas in playful pink letters, conveying a friendly and welcoming atmosphere for a veterinary clinic.">
@@ -40,56 +41,10 @@
 </header>
 
 
-<!--***************************** modal login **********************************-->
-<div id="loginModal" class="modal-login">
-  <div class="modal-logincontent">
-    <span class="close">&times;</span>
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm" action="login.php" method="POST">
-      <label for="email"><strong>Email:</strong></label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="password"><strong>Contraseña:</strong></label>
-      <input type="password" id="password" name="password" required>
-      <p>¿olvidaste tu contraseña?</p><a href="#">Enviar un correo de verificación</a>
-      <br>
-
-      <button class="iniciar">Iniciar Sesión</button>
-      <p>¿Eres nuevo? ¡Abre una cuenta para poder agendar citas!</p>
-      <button class="option" id="openRegisterModal">Regístrate</button>
-
-    </form>
-  </div>
-</div>
+ 
 
 
-<!--***************************** modal login **********************************-->
-<div id="registerModal" class="modal-register">
-  <div class="modal-registercontent">
-    <span class="close">&times;</span>
-    <h2>Registrarse</h2>
-    <form id="registerForm" action="register.php" method="POST">
-      <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono" name="telefono">
-
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-
-      <label for="direccion">Dirección:</label>
-      <input type="text" id="direccion" name="direccion">
-
-      </select>
-
-      <button class="sign">Registrarse</button>
-    </form>
-  </div>
-</div>
+ 
 <!--************************* texto ******************************-->
 <h1 class="titulo">CONSULTA VETERINARIA</h1>
 <hr>
@@ -219,27 +174,27 @@
     <!-- Servicios -->
     <div class="redes-section">
       <h3>SERVICIOS</h3>
-      <ul>
-        <li><a href="#">Ayudas Diagnósticas</a></li>
-        <li><a href="#">Hospitalización</a></li>
-        <li><a href="#">Urgencias 24 Horas</a></li>
-        <li><a href="#">Cirugía</a></li>
-        <li><a href="#">Medicina Preventiva</a></li>
-        <li><a href="#">Consulta</a></li>
-        <li><a href="#">Trámite de viaje</a></li>
-        <li><a href="#">Laboratorio Clínico</a></li>
-      </ul>
+            <ul>
+                <li><a href="{% url 'ayudas' %}">Ayudas Diagnósticas</a></li>
+                <li><a href="{% url 'hospitalizacion' %}">Hospitalización</a></li>
+                <li><a href="{% url 'urgencias' %}">Urgencias 24 Horas</a></li>
+                <li><a href="{% url 'cirugia' %}">Cirugía</a></li>
+                <li><a href="{% url 'medicina' %}">Medicina Preventiva</a></li>
+                <li><a href="{% url 'consulta' %}">Consulta</a></li>
+                <li><a href="{% url 'tramites' %}">Trámite de viaje</a></li>
+                <li><a href="{% url 'laboratorio' %}">Laboratorio Clínico</a></li>
+            </ul>
     </div>
 
     <!-- Información -->
     <div class="redes-section">
       <h3>INFORMACIÓN</h3>
       <ul>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="#">Contáctanos</a></li>
-        <li><a href="#">Preguntas frecuentes sobre cuidado animal</a></li>
-        <li><a href="#">Blog/Noticias</a></li>
-        <li><a href="#">Términos y Condiciones</a></li>
+            <ul>
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="https://wa.me/573113020495" target="_blank">Contáctanos</a></li>
+                <li><a href="{% url 'adopta' %}">Adopta</a></li>
+            </ul>
       </ul>
     </div>
   </div>
@@ -251,6 +206,10 @@
   <p>Diseño y desarrollo por M. X. V. © 2025</p>
 </footer>
 <script>
+document.getElementById('btn-llamar-emergencia').onclick = function() {
+    window.location.href = 'tel:3115406289';
+};
+
 document.getElementById('btn-whatsapp-modal').onclick = function() {
     window.open('https://wa.me/573113020495', '_blank');
 };

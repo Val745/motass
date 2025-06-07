@@ -1,19 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/CSS/signup.css?v=2">
+    <link rel="stylesheet" href="{% static 'CSS/signup.css' %}">
 
     <title>Registro - Motas</title>
 </head>
 <body>
     <!--************************* Cabecera ******************************-->
     <div id="urgencias">
-        <p>Línea de urgencias 24/7</p>
+        <a href="tel:3115406289" class="urgencia">Llama a la línea de emergencia</a>
     </div>
-
     <header id="Header">
         <img src="{% static 'img/LogoMotas.png' %}" class="logo" alt="Logo Motas">
 
