@@ -202,7 +202,7 @@ def enviar_mensaje(request):
             asunto,
             cuerpo,
             settings.DEFAULT_FROM_EMAIL,
-            ['programandoconv@gmail.com'],
+            ['whiledebugging@gmail.com'],
             fail_silently=False,
         )
         return render(request, 'mensaje_enviado.html')
