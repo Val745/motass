@@ -133,11 +133,16 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
-from django.contrib import admin
-from .models import Cita
 
 @admin.register(Cita)
 class CitaAdmin(admin.ModelAdmin):
-    list_display = ('servicio', 'fecha', 'hora', 'usuario')
-    list_filter = ('fecha', 'servicio')
-    search_fields = ('servicio', 'notas')
+    list_display = ('servicio_nombre', 'mascota_nombre', 'fecha', 'hora', 'usuario')
+    list_filter = ('servicio', 'fecha')
+
+    def servicio_nombre(self, obj):
+        return obj.get_servicio_display()
+    servicio_nombre.short_description = 'Servicio'
+
+    def mascota_nombre(self, obj):
+        return obj.mascota.nombre
+    mascota_nombre.short_description = 'Mascota'
