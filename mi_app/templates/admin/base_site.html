@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+  <div style="margin: 20px 0;">
+    <a href="/perfil.html" class="button"
+       style="background-color: #e91e63; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+      Ir a mi perfil
+    </a>
+  </div>
+  {{ block.super }}
+{% endblock %}
+
+<p style="color: red;">Probando base_site.html</p>

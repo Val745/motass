@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motas</title>
     <link rel="stylesheet" href="{% static 'CSS/perfil.css' %}">
-
 </head>
 
 <body>
@@ -19,11 +18,11 @@
 </div>
 
 <header id="Header">
-    <img src="../static/img/LogoMotas.png" class="logo">
+    <img src="{% static 'img/LogoMotas.png' %}" class="logo">
 
     <input type="checkbox" id="menu">
     <label for="menu">
-        <img src="../static/img/menu.png" class="menu-ico" alt="Menú">
+        <img src="{% static 'img/menu.png' %}" class="menu-ico" alt="Menú">
     </label>
 
     <ul class="menu">
@@ -39,7 +38,6 @@
             <li class="item"><a href="{% url 'signup' %}">registro</a></li>
         {% endif %}
     </ul>
-
 </header>
 
 <!--************************* Botón WhatsApp ******************************-->
@@ -101,17 +99,15 @@ document.getElementById('btn-whatsapp-modal').onclick = function() {
 };
 
 document.getElementById('btn-agenda-modal').onclick = function() {
-    // Cambia 'ir-a-citas' por el id real de tu botón de agendar si es diferente
     var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
     if (agendarBtn) {
         agendarBtn.click();
     } else {
-        // Si no hay botón, puedes redirigir a la página de citas
         window.location.href = '/citas/';
     }
 };
 </script>
-<script src="../static/js/script.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>

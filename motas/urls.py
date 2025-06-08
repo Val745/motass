@@ -39,6 +39,5 @@ urlpatterns = [
     path('agendar_cita/', views.agendar_cita, name='agendar_cita'),
     path('enviar_mensaje/', views.enviar_mensaje, name='enviar_mensaje'),
     path('api/crear_cita/', views.crear_cita, name='crear_cita'),
-    path('lista_citas/', views.ListaCitasView.as_view(), name='lista_citas'),
-    # Elimina el duplicado de crear_cita que aparece al final
+    path('lista_citas/', views.lista_citas, name='lista_citas'),
 ]

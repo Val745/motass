@@ -226,6 +226,14 @@ def enviar_mensaje(request):
         return render(request, 'mensaje_enviado.html')
     return redirect('index')
 
+from django.shortcuts import render
+from .models import Cita
+
+def lista_citas(request):
+    citas = Cita.objects.all()
+    return render(request, 'lista_citas.html', {'citas': citas})
+
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Cita, Mascota
@@ -243,7 +251,7 @@ def crear_cita(request):
             hora = request.POST.get('hora')
             notas = request.POST.get('notas', '')
             
-            # Validaciones
+            # Validaciones básicas
             if not all([servicio, mascota_id, fecha, hora]):
                 return JsonResponse({
                     'success': False, 
@@ -252,6 +260,19 @@ def crear_cita(request):
             
             # Verificar que la mascota pertenece al usuario
             mascota = Mascota.objects.get(id=mascota_id, user=request.user)
+            
+            # Validar que no exista una cita para ese usuario en esa fecha y hora
+            cita_existente = Cita.objects.filter(
+                fecha=fecha,
+                hora=hora
+            ).exists()
+
+            
+            if cita_existente:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Ese horario ya está ocupado, por favor elige otro'
+                }, status=400)
             
             # Crear y guardar la cita
             cita = Cita.objects.create(
@@ -284,13 +305,4 @@ def crear_cita(request):
         'success': False, 
         'error': 'Método no permitido'
     }, status=405)
-from django.views.generic import ListView
-from .models import Cita
 
-class ListaCitasView(ListView):
-    model = Cita
-    template_name = 'lista_citas.html'
-    context_object_name = 'citas'
-
-    def get_queryset(self):
-        return Cita.objects.filter(usuario=self.request.user)

@@ -146,3 +146,5 @@ class CitaAdmin(admin.ModelAdmin):
     def mascota_nombre(self, obj):
         return obj.mascota.nombre
     mascota_nombre.short_description = 'Mascota'
+
+

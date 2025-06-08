@@ -117,6 +117,24 @@
     <h2>Agendar cita</h2>
     <form id="form-agendar-modal" method="POST" action="{% url 'crear_cita' %}">
     {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+            {% for error in form.non_field_errors %}
+                <p class="error-text">{{ error }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% for field in form %}
+            <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% for error in field.errors %}
+                <p class="error-text">{{ error }}</p>
+            {% endfor %}
+            </div>
+        {% endfor %}
+
+
       <label for="servicio-modal">Servicio:</label>
       <input type="text" id="servicio-modal" name="servicio" readonly required>
       

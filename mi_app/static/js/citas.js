@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         .then(response => {
-            if (!response.ok) throw new Error('Error en el servidor');
+            if (!response.ok) throw new Error('Ese horario ya está ocupado, por favor elige otro');
             return response.json();
         })
         .then(data => {

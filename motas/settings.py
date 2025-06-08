@@ -138,7 +138,8 @@ ROOT_URLCONF = 'motas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'mi_app', 'templates')],  # Ajusta la ruta
+        #'DIRS': [os.path.join(BASE_DIR, 'mi_app', 'templates')],  # Ajusta la ruta
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

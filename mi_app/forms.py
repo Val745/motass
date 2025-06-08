@@ -144,9 +144,7 @@ SERVICIOS = [
     ('Trámites de viaje', 'Trámites de viaje'),
     ('Otro servicio', 'Otro servicio'),
 ]
-from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Cita
 
 class CitaForm(forms.ModelForm):
     class Meta:
@@ -199,3 +197,15 @@ class CitaForm(forms.ModelForm):
             if not self.user.mascotas.exists():
                 self.fields['mascota'].widget = forms.HiddenInput()
                 self.fields['mascota'].required = False
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        fecha = cleaned_data.get('fecha')
+        hora = cleaned_data.get('hora')
+
+        if fecha and hora:
+            existe = Cita.objects.filter(fecha=fecha, hora=hora).exists()
+            if existe:
+                raise ValidationError("Ya existe una cita programada para esa fecha y hora.")
+
+        return cleaned_data
