@@ -115,27 +115,34 @@
   <div class="modal-agendar-content">
     <span id="cerrar-modal-agendar" class="cerrar-modal">&times;</span>
     <h2>Agendar cita</h2>
-    <form id="form-agendar-modal">
-        <label for="servicio-modal">Servicio:</label>
-        <input type="text" id="servicio-modal" name="servicio" readonly>
-        <br>
+    <form id="form-agendar-modal" method="POST" action="{% url 'crear_cita' %}">
+    {% csrf_token %}
+      <label for="servicio-modal">Servicio:</label>
+      <input type="text" id="servicio-modal" name="servicio" readonly required>
+      
+    <div class="form-group">
         <label for="mascota-modal">Mascota:</label>
-        <select id="mascota-modal" name="mascota">
-            <option value="">Selecciona tu mascota</option>
-            {% for mascota in mascotas %}
-                <option value="{{ mascota.id }}">{{ mascota.nombre }}</option>
-            {% endfor %}
+        <select id="mascota-modal" name="mascota" class="form-control" required>
+        <option value="">Selecciona tu mascota</option>
+        {% for mascota in mascotas %}
+            <option value="{{ mascota.id }}">{{ mascota.nombre }}</option>
+        {% endfor %}
         </select>
-        <br>
-        <label for="dia-modal">Día:</label>
-        <input type="date" id="dia-modal" name="dia">
-        <br>
+    </div>
+    
+    <div class="form-group">
+        <label for="dia-modal">Fecha:</label>
+        <input type="date" id="dia-modal" name="fecha" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
         <label for="hora-modal">Hora:</label>
-        <select id="hora-modal" name="hora" disabled>
-            <option value="">Selecciona un horario</option>
-        </select>    
-        <br>
-        <button type="submit">Agendar</button>
+        <select id="hora-modal" name="hora" class="form-control" required>
+        <option value="">Selecciona un horario</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Agendar cita</button>
     </form>
   </div>
 </div>

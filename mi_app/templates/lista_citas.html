@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Mis Citas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Mascota</th>
+                <th>Servicio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.fecha }}</td>
+                <td>{{ cita.hora }}</td>
+                <td>{{ cita.mascota.nombre }}</td>
+                <td>{{ cita.servicio }}</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-info">Editar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No tienes citas agendadas</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_cita' %}" class="btn btn-primary">Nueva Cita</a>
+</div>
+{% endblock %}

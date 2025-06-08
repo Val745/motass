@@ -5,6 +5,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from .models import CustomUser
+from .models import Cita
 
 class MascotaAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'especie', 'raza', 'edad', 'sexo', 'user')
@@ -131,3 +132,12 @@ class CustomUserAdmin(UserAdmin):
         return form
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+from django.contrib import admin
+from .models import Cita
+
+@admin.register(Cita)
+class CitaAdmin(admin.ModelAdmin):
+    list_display = ('servicio', 'fecha', 'hora', 'usuario')
+    list_filter = ('fecha', 'servicio')
+    search_fields = ('servicio', 'notas')

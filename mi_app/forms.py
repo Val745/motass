@@ -4,7 +4,7 @@ from .models import Mascota, HistorialMedico
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser  # Usa tu modelo personalizado
 from .models import Cita, Mascota
-
+from mi_app.models import Mascota
 
 class CustomUserCreationForm(UserCreationForm):
     username = forms.EmailField(
@@ -144,17 +144,58 @@ SERVICIOS = [
     ('Trámites de viaje', 'Trámites de viaje'),
     ('Otro servicio', 'Otro servicio'),
 ]
+from django import forms
+from django.utils.translation import gettext_lazy as _
+from .models import Cita
 
 class CitaForm(forms.ModelForm):
-    motivo = forms.ChoiceField(choices=SERVICIOS, label="Servicio")
-    dia = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    hora = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
-
     class Meta:
         model = Cita
-        fields = ['mascota', 'motivo', 'dia', 'hora']
+        fields = ['servicio', 'mascota', 'fecha', 'hora', 'notas']
+        widgets = {
+            'servicio': forms.Select(attrs={
+                'class': 'form-control',
+                'style': 'width: 100%'
+            }),
+            'mascota': forms.Select(attrs={
+                'class': 'form-control',
+                'style': 'width: 100%'
+            }),
+            'fecha': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+                'style': 'width: 100%'
+            }),
+            'hora': forms.TimeInput(attrs={
+                'type': 'time',
+                'class': 'form-control',
+                'style': 'width: 100%'
+            }),
+            'notas': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'style': 'width: 100%'
+            }),
+        }
+        labels = {
+            'servicio': _('Tipo de servicio'),
+            'mascota': _('Mascota'),
+            'fecha': _('Fecha'),
+            'hora': _('Hora'),
+            'notas': _('Notas adicionales'),
+        }
+
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
-        super().__init__(*args, **kwargs)
-        self.fields['mascota'].queryset = Mascota.objects.filter(user=user)
+        # Extrae el parámetro 'user' antes de llamar al padre
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)  # Ahora sin el parámetro user
+        
+        if self.user:
+            # Filtra las mascotas del usuario actual
+            self.fields['mascota'].queryset = self.user.mascotas.all()
+            
+            # Si no tiene mascotas, oculta el campo
+            if not self.user.mascotas.exists():
+                self.fields['mascota'].widget = forms.HiddenInput()
+                self.fields['mascota'].required = False

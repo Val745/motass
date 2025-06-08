@@ -13,7 +13,11 @@ from .forms import MascotaForm, HistorialFormSet
 from .forms import CitaForm
 from django.core.mail import send_mail
 from django.conf import settings
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Cita
+from mi_app.models import Mascota
+import json
 def index(request):
     return render(request, 'index.html')
 
@@ -173,20 +177,34 @@ def cuidado_perros(request):
 def vacunacion_gatos(request):
     return render(request, 'blog/vacunacion_gatos.html')
 
+from django.shortcuts import render, redirect
+from .forms import CitaForm
+from django.contrib.auth.decorators import login_required
+
+from django.shortcuts import render, redirect
+from .forms import CitaForm
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='signin')  # Esto reemplaza tu verificación manual de autenticación
 def agendar_cita(request):
-    if not request.user.is_authenticated:
-        return redirect('signin')
     if request.method == 'POST':
         form = CitaForm(request.POST, user=request.user)
         if form.is_valid():
             cita = form.save(commit=False)
-            cita.usuario = request.user
+            # Asegúrate que tu modelo Cita tenga un campo 'user' en lugar de 'usuario'
+            cita.user = request.user  # Cambiado de 'usuario' a 'user' para consistencia
             cita.save()
-            return redirect('perfil')  # O donde quieras redirigir
+            return redirect('perfil')
     else:
         form = CitaForm(user=request.user)
-    return render(request, 'citas.html', {'form': form})
-
+    
+    # Agrega contexto adicional si es necesario
+    context = {
+        'form': form,
+        'mascotas': request.user.mascotas.all() if hasattr(request.user, 'mascotas') else []
+    }
+    
+    return render(request, 'citas.html', context)
 
 def enviar_mensaje(request):
     if request.method == 'POST':
@@ -207,3 +225,72 @@ def enviar_mensaje(request):
         )
         return render(request, 'mensaje_enviado.html')
     return redirect('index')
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Cita, Mascota
+from django.contrib.auth.decorators import login_required
+
+@csrf_exempt
+@login_required
+def crear_cita(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos del formulario
+            servicio = request.POST.get('servicio')
+            mascota_id = request.POST.get('mascota')
+            fecha = request.POST.get('fecha')
+            hora = request.POST.get('hora')
+            notas = request.POST.get('notas', '')
+            
+            # Validaciones
+            if not all([servicio, mascota_id, fecha, hora]):
+                return JsonResponse({
+                    'success': False, 
+                    'error': 'Todos los campos obligatorios son requeridos'
+                }, status=400)
+            
+            # Verificar que la mascota pertenece al usuario
+            mascota = Mascota.objects.get(id=mascota_id, user=request.user)
+            
+            # Crear y guardar la cita
+            cita = Cita.objects.create(
+                usuario=request.user,
+                mascota=mascota,
+                servicio=servicio,
+                fecha=fecha,
+                hora=hora,
+                notas=notas
+            )
+            
+            return JsonResponse({
+                'success': True,
+                'cita_id': cita.id
+            })
+            
+        except Mascota.DoesNotExist:
+            return JsonResponse({
+                'success': False, 
+                'error': 'Mascota no encontrada o no pertenece al usuario'
+            }, status=404)
+            
+        except Exception as e:
+            return JsonResponse({
+                'success': False, 
+                'error': str(e)
+            }, status=500)
+    
+    return JsonResponse({
+        'success': False, 
+        'error': 'Método no permitido'
+    }, status=405)
+from django.views.generic import ListView
+from .models import Cita
+
+class ListaCitasView(ListView):
+    model = Cita
+    template_name = 'lista_citas.html'
+    context_object_name = 'citas'
+
+    def get_queryset(self):
+        return Cita.objects.filter(usuario=self.request.user)

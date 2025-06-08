@@ -1,7 +1,36 @@
-<h2>Agendar Cita</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Agendar</button>
-</form>
+{% extends 'base.html' %}
+{% load i18n widget_tweaks %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">{{ titulo }}</h2>
+    
+    {% if messages %}
+    <div class="mb-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="row g-3">
+            <!-- Campos del formulario... -->
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <a href="{% url 'lista_citas' %}" class="btn btn-secondary me-md-2">
+                {% trans 'Cancelar' %}
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-calendar-check"></i> {% trans 'Confirmar Cita' %}
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}
