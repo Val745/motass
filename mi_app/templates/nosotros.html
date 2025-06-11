@@ -92,31 +92,32 @@
     <h2>Contenido para el cuidado de tu mascota</h2>
     <div class="post-grid">
         <article class="post">
-            <img src="../static/img/blog1.png" alt="Veterinaria para perros">
-            <h3><a href="../blog/cuidado_perros/">Cuidado veterinario para perros</a></h3>
+            <img src="{% static 'img/blog1.png' %}" alt="Veterinaria para perros">
+            <h3><a href="{% url 'cuidado_perros' %}">Cuidado veterinario para perros</a></h3>
             <p>Consejos esenciales para mantener la salud de tu perro y prevenir enfermedades.</p>
-            <a href="../blog/cuidado_perros/" class="leer-mas">Ver más</a>
+            <a href="{% url 'cuidado_perros' %}" class="leer-mas">Ver más</a>
         </article>
         <article class="post">
-            <img src="../static/img/blog2.png" alt="Enfermedades en perros">
-            <h3><a href="../blog/enfermedades_perros/">Enfermedades comunes en perros</a></h3>
+            <img src="{% static 'img/blog2.png' %}" alt="Enfermedades en perros">
+            <h3><a href="{% url 'enfermedades_perros' %}">Enfermedades comunes en perros</a></h3>
             <p>Aprende sobre las enfermedades más comunes en los perros y cómo prevenirlas.</p>
-            <a href="../blog/enfermedades_perros/" class="leer-mas">Ver más</a>
+            <a href="{% url 'enfermedades_perros' %}" class="leer-mas">Ver más</a>
         </article>
         <article class="post">
-            <img src="../static/img/blog3.png" alt="Salud en gatos">
-            <h3><a href="../blog/salud_felina/">Salud felina y cuidados</a></h3>
+            <img src="{% static 'img/blog3.png' %}" alt="Salud en gatos">
+            <h3><a href="{% url 'salud_felina' %}">Salud felina y cuidados</a></h3>
             <p>Descubre los mejores consejos para mantener a tu gato sano y feliz.</p>
-            <a href="../blog/salud_felina/" class="leer-mas">Ver más</a>
+            <a href="{% url 'salud_felina' %}" class="leer-mas">Ver más</a>
         </article>
         <article class="post">
-            <img src="../static/img/blog4.png" alt="Vacunas para gatos">
-            <h3><a href="../blog/vacunacion_gatos/">Vacunación en gatos</a></h3>
+            <img src="{% static 'img/blog4.png' %}" alt="Vacunas para gatos">
+            <h3><a href="{% url 'vacunacion_gatos' %}">Vacunación en gatos</a></h3>
             <p>Lista de vacunas esenciales para proteger a tu gato de enfermedades graves.</p>
-            <a href="../blog/vacunacion_gatos/" class="leer-mas">Ver más</a>
+            <a href="{% url 'vacunacion_gatos' %}" class="leer-mas">Ver más</a>
         </article>
     </div>
 </section>
+
 
         <div class="nosotros-equipo">
             <h3>NUESTRO EQUIPO</h3>
