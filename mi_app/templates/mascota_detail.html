@@ -7,24 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motas</title>
     <link rel="stylesheet" href="{% static 'CSS/mascota_detail.css' %}">
-
 </head>
 
 <body>
 
-    <!--************************* Cabecera ******************************-->
+    <!-- Cabecera -->
     <div id="urgencias">
         <p>Línea de urgencias 24/7</p>
     </div>
     
     <header id="Header">
         <img src="../../static/img/LogoMotas.png" class="logo">
-
         <input type="checkbox" id="menu">
         <label for="menu">
             <img src="../../static/img/menu.png" class="menu-ico" alt="Menú">
         </label>
-
         <ul class="menu">
             <li class="item"><a href="{% url 'index' %}">Inicio</a></li>
             <li class="item"><a href="{% url 'citas' %}">citas</a></li>
@@ -39,25 +36,26 @@
                 <li class="item"><a href="{% url 'signup' %}">registro</a></li>
             {% endif %}
         </ul>
-
     </header>
 
-    <!--************************* Modal de Contacto ******************************-->
-<!--************************* Modal de Contacto ******************************-->
-<div id="modal-contacto" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Contáctanos</h2>
-    <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
-    <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
-    <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
-  </div>
-</div>
-    <h2>¡EDITA LOS DATOS DE TU MASCOTA!</h2><BR>
-    <div class="form-seccion">
-        <form method="POST">
-            {% csrf_token %}
+    <!-- Modal de Contacto -->
+    <div id="modal-contacto" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Contáctanos</h2>
+            <button class="emergency" id="btn-llamar-emergencia">Llama a la línea de emergencia</button>
+            <button class="option" id="btn-whatsapp-modal">Escríbenos un mensaje</button>
+            <button class="option" id="btn-agenda-modal">Agenda tu cita</button>
+        </div>
+    </div>
+
+    <h2>¡EDITA LOS DATOS DE TU MASCOTA!</h2><br>
     
+    <!-- Formulario principal -->
+    <form method="POST" id="main-form">
+        {% csrf_token %}
+        
+        <div class="form-seccion">
             <div class="form-mascota">
                 {% for field in form.visible_fields %}
                 <div class="campo-formulario">
@@ -70,61 +68,120 @@
                     </h4>
                     {{ field }}
                 </div>
-            {% endfor %}
-
+                {% endfor %}
             </div>
-        </form>
-    </div>
-    <br>
-    <div class="form-seccion">
-        <form method="get">
+        </div>
+        
+        <br>
+        
+        <!-- Historial Médico CORREGIDO -->
+        <div class="form-seccion">
             <h3>Historial Médico</h3>
             {{ formset.management_form }}
             {% for f in formset %}
                 <div class="form-historial">
+                    {% for field in f.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
                     {% for field in f.visible_fields %}
+                        <!-- EXCLUIR el campo DELETE -->
+                        {% if field.name != "DELETE" %}
                         <div class="campo-lectura">
-                            <h4>{{ field.label }}</h4>
+                            <h4>
+                                {% if field.name == "ultima_consulta" %}
+                                    Última Consulta
+                                {% elif field.name == "alergias" %}
+                                    Alergias
+                                {% elif field.name == "cirugias_previas" %}
+                                    Cirugías Previas
+                                {% elif field.name == "enfermedades_cronicas" %}
+                                    Enfermedades Crónicas
+                                {% elif field.name == "alimentacion" %}
+                                    Alimentación
+                                {% elif field.name == "hidratacion" %}
+                                    Hidratación
+                                {% elif field.name == "vacuna_moquillo" %}
+                                    Vacuna Moquillo
+                                {% elif field.name == "vacuna_parvovirus" %}
+                                    Vacuna Parvovirus
+                                {% elif field.name == "vacuna_rabia" %}
+                                    Vacuna Rabia
+                                {% elif field.name == "vacuna_leptospirosis" %}
+                                    Vacuna Leptospirosis
+                                {% elif field.name == "vacuna_polivalente" %}
+                                    Vacuna Polivalente
+                                {% elif field.name == "desparasitacion_interna" %}
+                                    Desparasitación Interna
+                                {% elif field.name == "desparasitacion_externa" %}
+                                    Desparasitación Externa
+                                {% else %}
+                                    {{ field.label }}
+                                {% endif %}
+                            </h4>
                             <p>
-                                {% if field.label == "Peso (kg)" and field.value == None %}
-                                    Indefinido
-                                {% elif field.value == None or field.value == "" %}
+                                {% if field.value == None or field.value == "" %}
                                     Indefinido
                                 {% elif field.value == True %}
-                                    Aplicada
+                                    Sí
                                 {% elif field.value == False %}
-                                    No Aplicada
+                                    No
                                 {% else %}
                                     {{ field.value }}
                                 {% endif %}
                             </p>
                         </div>
+                        {% endif %}
                     {% endfor %}
+                    
+                    <!-- Opción para eliminar (si quieres mantenerla pero oculta) -->
+                    <div class="eliminar-opcion" style="display: none;">
+                        {{ f.DELETE }}
+                    </div>
                 </div>
+                {% if not forloop.last %}<hr>{% endif %}
             {% endfor %}
-    
-        </form>
-    </div>
-    <button class="Guardar-btn">GUARDAR</button>
-<script>
-document.getElementById('btn-llamar-emergencia').onclick = function() {
-    window.location.href = 'tel:3115406289';
-};
+        </div>
+        
+        <button type="submit" class="Guardar-btn">GUARDAR</button>
+    </form>
 
-document.getElementById('btn-whatsapp-modal').onclick = function() {
-    window.open('https://wa.me/573113020495', '_blank');
-};
+    <script>
+        // Scripts del modal
+        document.getElementById('btn-llamar-emergencia').onclick = function() {
+            window.location.href = 'tel:3115406289';
+        };
 
-document.getElementById('btn-agenda-modal').onclick = function() {
-    // Cambia 'ir-a-citas' por el id real de tu botón de agendar si es diferente
-    var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
-    if (agendarBtn) {
-        agendarBtn.click();
-    } else {
-        // Si no hay botón, puedes redirigir a la página de citas
-        window.location.href = '/citas/';
-    }
-};
-</script>
+        document.getElementById('btn-whatsapp-modal').onclick = function() {
+            window.open('https://wa.me/573113020495', '_blank');
+        };
+
+        document.getElementById('btn-agenda-modal').onclick = function() {
+            var agendarBtn = document.getElementById('ir-a-citas') || document.getElementById('abrir-modal-cita');
+            if (agendarBtn) {
+                agendarBtn.click();
+            } else {
+                window.location.href = '/citas/';
+            }
+        };
+
+        // Manejo del modal
+        const modal = document.getElementById('modal-contacto');
+        const btn = document.getElementById('contactanos-btn');
+        const span = document.getElementsByClassName('close')[0];
+
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

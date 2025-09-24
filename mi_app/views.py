@@ -93,29 +93,63 @@ def crear_mascota(request):
 def nosotros(request):
     return render(request, 'nosotros.html')
 
+from django.forms import modelformset_factory
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import Mascota, HistorialMedico
+from .forms import MascotaForm
+
 def mascota_detail(request, mascota_id):
     mascota = get_object_or_404(Mascota, id=mascota_id)
-
-    # Solo crear HistorialMedico si NO existe y además es POST con datos válidos
-    try:
-        historial = HistorialMedico.objects.get(mascota=mascota)
-    except HistorialMedico.DoesNotExist:
-        historial = None
-
-    form = MascotaForm(request.POST or None, instance=mascota)
-    formset = HistorialFormSet(request.POST or None, instance=mascota)
-
+    
+    # Usar los campos REALES de tu modelo HistorialMedico
+    HistorialFormSet = modelformset_factory(
+        HistorialMedico,
+        fields=(
+            'ultima_consulta', 
+            'peso', 
+            'alergias', 
+            'cirugias_previas', 
+            'enfermedades_cronicas', 
+            'alimentacion', 
+            'hidratacion', 
+            'vacuna_moquillo', 
+            'vacuna_parvovirus', 
+            'vacuna_rabia', 
+            'vacuna_leptospirosis', 
+            'vacuna_polivalente', 
+            'desparasitacion_interna', 
+            'desparasitacion_externa'
+        ),
+        extra=0,
+        can_delete=True
+    )
+    
     if request.method == 'POST':
+        form = MascotaForm(request.POST, instance=mascota)
+        formset = HistorialFormSet(
+            request.POST, 
+            queryset=HistorialMedico.objects.filter(mascota=mascota)
+        )
+        
         if form.is_valid() and formset.is_valid():
             form.save()
-            formset.save()
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.mascota = mascota
+                instance.save()
+            for obj in formset.deleted_objects:
+                obj.delete()
             return redirect('mascota_detail', mascota_id=mascota.id)
+    else:
+        form = MascotaForm(instance=mascota)
+        formset = HistorialFormSet(
+            queryset=HistorialMedico.objects.filter(mascota=mascota)
+        )
 
     return render(request, 'mascota_detail.html', {
         'form': form,
         'formset': formset,
         'mascota': mascota,
-        'historial': historial,
     })
 
 
