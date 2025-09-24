@@ -98,10 +98,21 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Mascota, HistorialMedico
 from .forms import MascotaForm
 
+from django.forms import modelformset_factory
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
+from .models import Mascota, HistorialMedico
+from .forms import MascotaForm
+
 def mascota_detail(request, mascota_id):
     mascota = get_object_or_404(Mascota, id=mascota_id)
     
-    # Usar los campos REALES de tu modelo HistorialMedico
+    # Verificar que el usuario es el dueño de la mascota
+    if mascota.user != request.user:
+        messages.error(request, "No tienes permiso para editar esta mascota.")
+        return redirect('perfil')
+    
+    # Formset para el historial médico (solo visualización)
     HistorialFormSet = modelformset_factory(
         HistorialMedico,
         fields=(
@@ -121,37 +132,32 @@ def mascota_detail(request, mascota_id):
             'desparasitacion_externa'
         ),
         extra=0,
-        can_delete=True
+        can_delete=False  # Cambiado a False para evitar el campo DELETE
     )
     
     if request.method == 'POST':
+        # SOLO procesar el formulario de la mascota (no el formset)
         form = MascotaForm(request.POST, instance=mascota)
-        formset = HistorialFormSet(
-            request.POST, 
-            queryset=HistorialMedico.objects.filter(mascota=mascota)
-        )
         
-        if form.is_valid() and formset.is_valid():
+        if form.is_valid():
             form.save()
-            instances = formset.save(commit=False)
-            for instance in instances:
-                instance.mascota = mascota
-                instance.save()
-            for obj in formset.deleted_objects:
-                obj.delete()
-            return redirect('mascota_detail', mascota_id=mascota.id)
+            messages.success(request, f"¡Los datos de {mascota.nombre} se han actualizado correctamente!")
+            return redirect('perfil')  # ✅ Redirigir al PERFIL, no a la misma página
+        else:
+            messages.error(request, "Hubo un error al guardar los datos. Por favor, revisa el formulario.")
+    
     else:
+        # GET request - mostrar formulario con datos actuales
         form = MascotaForm(instance=mascota)
-        formset = HistorialFormSet(
-            queryset=HistorialMedico.objects.filter(mascota=mascota)
-        )
-
+    
+    # Siempre cargar el formset para visualización (solo lectura)
+    formset = HistorialFormSet(queryset=HistorialMedico.objects.filter(mascota=mascota))
+    
     return render(request, 'mascota_detail.html', {
         'form': form,
         'formset': formset,
         'mascota': mascota,
     })
-
 
 def citas(request):
     mascotas = Mascota.objects.filter(user=request.user) if request.user.is_authenticated else []
